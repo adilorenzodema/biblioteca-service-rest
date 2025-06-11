@@ -1,4 +1,4 @@
-package com.example.bibliotecaScolastica_service;
+package com.example.bibliotecaScolastica;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
