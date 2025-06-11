@@ -1,5 +1,12 @@
-package com.example.bibliotecaScolastica_service;
-import java.persistence.*;
+package com.example.bibliotecaScolastica.model;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 @Entity
 public class Prestito {
 	@Id
@@ -56,7 +63,7 @@ public class Prestito {
 	
 	public LocalDateTime getDataFine(){return dataFine;}
 	public void setDataFine(LocalDateTime dataFine) {
-		this.dataFineInizio=dataFine;
+		this.dataFine=dataFine;
 	}
 	
 	public LocalDateTime getDataCreazione() {return dataCreazione;}

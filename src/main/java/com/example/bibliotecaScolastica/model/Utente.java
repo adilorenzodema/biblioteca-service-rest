@@ -1,5 +1,13 @@
-package com.example.bibliotecaScolastica_service;
-import java.persistence.*;
+package com.example.bibliotecaScolastica.model;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 @Entity
 public class Utente {
 	@Id
@@ -33,11 +41,11 @@ public class Utente {
 	@Column(nullable=false)
 	private boolean active;
 	
-	@Column (nullabe=false)
+	@Column (nullable=false)
 	private int idRuolo;
 	
 	//Costruttore
-	public Utente (Long idRuolo, String nome, String cognome, String codiceFiscale, String classe,LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,boolean active, int idRuolo) {
+	public Utente (int idRuolo, String nome, String cognome, String codiceFiscale, String classe,LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,boolean active) {
 		this.idRuolo=idRuolo;
 		this.nome=nome;
 		this.cognome=cognome;

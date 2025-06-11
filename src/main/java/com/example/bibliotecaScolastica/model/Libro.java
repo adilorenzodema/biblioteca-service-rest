@@ -1,5 +1,13 @@
 package com.example.bibliotecaScolastica.model;
-import java.persistence.*;
+
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 @Entity
 public class Libro {
 	@Id
@@ -28,11 +36,11 @@ public class Libro {
 	
 	//Costruttore
 	public Libro(String titolo, String autore,String casaEditrice,String genere, String IBAN, int disponibilita,LocalDateTime dataCreazione,LocalDateTime dataModifica) {
-		this.TITOLO=titolo;
-		this.AUTORE=autore;
-		this.CASAEDITRICE=casaEditrice;
-		this.GENERE=genere;
-		this.IBAN=IBAN;
+		this.titolo=titolo;
+		this.autore=autore;
+		this.casaEditrice=casaEditrice;
+		this.genere=genere;
+		this.iban=IBAN;
 		this.disponibilita=disponibilita;
 		this.dataCreazione=dataCreazione;
 		this.dataModifica=dataModifica;
@@ -54,7 +62,7 @@ public class Libro {
 		this.autore=autore;
 	}
 	
-	public String getCasaEditrice() {return CASAEDITRICE;}
+	public String getCasaEditrice() {return casaEditrice;}
 	public void setCasaEditricie(String casaEditrice) {
 		this.casaEditrice=casaEditrice;
 	}
@@ -68,12 +76,12 @@ public class Libro {
 		this.iban=iban;
 	}
 	
-	public int getDisponibilita(return disponibilita;)
+	public int getDisponibilita() { return disponibilita;}
 	public void setDisponibilita (int disponibilita) {
 		this.disponibilita=disponibilita;
 	}
 	
-	public locaLocalDateTimelDateTime getDataCreazione() {return dataCreazione;}
+	public LocalDateTime getDataCreazione() {return dataCreazione;}
 	public void setDataCreazione(LocalDateTime dataCreazione) {
 		this.dataCreazione=dataCreazione;
 	}

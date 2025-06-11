@@ -1,5 +1,10 @@
-package com.example.bibliotecaScolastica_service;
-import java.persistence.*;
+package com.example.bibliotecaScolastica.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 @Entity
 public class Ruolo {
 	@Id
