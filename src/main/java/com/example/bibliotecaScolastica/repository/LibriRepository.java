@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;import java.util.List;
 import com.example.bibliotecaScolastica.model.Libro;
 
 @Repository
-public class LibriRepository extends JpaRepository<Libro,Long> {
+public interface LibriRepository extends JpaRepository<Libro,Long> {
 	
 }
