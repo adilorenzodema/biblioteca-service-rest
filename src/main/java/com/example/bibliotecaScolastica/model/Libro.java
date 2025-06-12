@@ -12,27 +12,32 @@ import jakarta.persistence.Id;
 public class Libro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idlibro")
 	private Long idLibro;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, name="titolo")
 	private String titolo;
-	@Column
+	@Column(name="autore")
 	private String autore;
-	@Column
+	@Column(name="casaeditrice")
 	private String casaEditrice;
-	@Column
+	@Column(name="genere")
 	private String genere;
-	@Column
+	@Column(name="codiceiban")
 	private String iban;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, name="disponibilita")
 	private int disponibilita;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, name="datacreazione")
 	private LocalDateTime dataCreazione;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, name="datamodifica")
 	private LocalDateTime dataModifica;
+	
+	//Costruttore vuoto richiesto da JPA
+    public Libro() {
+    }
 	
 	//Costruttore
 	public Libro(String titolo, String autore,String casaEditrice,String genere, String IBAN, int disponibilita,LocalDateTime dataCreazione,LocalDateTime dataModifica) {
