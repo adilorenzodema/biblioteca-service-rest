@@ -14,7 +14,7 @@ public class LibriController {
         this.libriService = libriService;
     }
 
-    @GetMapping
+    @GetMapping("/getAllLibri")
     public List<Libro> getTuttiILibri() {
         return libriService.getAllLibri();
     }

@@ -8,6 +8,6 @@ import com.example.bibliotecaScolastica.model.Libro;
 
 @Repository
 public interface LibriRepository extends JpaRepository<Libro,Long> {
-	@Query(value="Select*FROM libro",nativeQuery=true)
+	@Query(value="select * from schemabiblioteca.libro",nativeQuery=true)
 	List<Libro> findAllNative();
 }
