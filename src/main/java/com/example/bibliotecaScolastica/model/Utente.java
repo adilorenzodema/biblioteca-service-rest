@@ -44,7 +44,7 @@ public class Utente {
 	@Column (nullable=false)
 	private int idRuolo;
 	
-	//Costruttore
+	
 	public Utente (int idRuolo, String nome, String cognome, String codiceFiscale, String classe,LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,boolean active) {
 		this.idRuolo=idRuolo;
 		this.nome=nome;
