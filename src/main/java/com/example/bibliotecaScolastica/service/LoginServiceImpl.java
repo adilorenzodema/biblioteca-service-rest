@@ -15,10 +15,10 @@ public class LoginServiceImpl implements LoginService{
 	public boolean checkUser(String username, String password) {
 	    Utente utente = this.loginRepository.checkUtente(username);
 	    if(utente == null) {
-	        throw new IllegalArgumentException("Utente non trovato");
+	        throw new IllegalArgumentException("Credenziali errate");
 	    }
 	    
-	    if (password==utente.getPassword()) {
+	    if (utente.getPassword().equals(password)) {
 	        return true;
 	    } else {
 	        throw new IllegalArgumentException("Password errata");

@@ -15,46 +15,50 @@ public class Utente {
 	@Column(name="idalunno")
 	private Long idAlunno;
 	
-	@Column(nullable=false,name="nome")
+	@Column(name="nome")
 	private String nome;
 	
-	@Column(nullable=false,name="cognome")
+	@Column(name="cognome")
 	private String cognome;
 	
-	@Column(nullable=false,name="codicefiscale")
+	@Column(name="codicefiscale")
 	private String codiceFiscale;
 	
-	@Column(nullable=false,name="classe")
+	@Column(name="classe")
 	private String classe;
 	
-	@Column(nullable=false,name="datacreazione")
+	@Column(name="datacreazione")
 	private LocalDateTime dataCreazione;
 	
-	@Column(nullable=false,name="datamodifica")
+	@Column(name="datamodifica")
 	private LocalDateTime dataModifica;
 	
-	@Column(nullable=false,name="username")
+	@Column(name="username")
 	private String username;
 	
-	@Column(nullable=false,name="password")
+	@Column(name="password")
 	private String password;
 	
-	@Column(nullable=false,name="active")
-	private boolean active;
+	@Column(name="active")
+	private Boolean active;
 	
-	@Column (nullable=false,name="idruolo")
-	private Integer idRuolo;
+	@Column (name="idruolo")
+	private int idRuolo;
 	
 	public Utente() { }
 	
-	public Utente (int idRuolo, String nome, String cognome, String codiceFiscale, String classe,LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,boolean active) {
-		this.idRuolo=idRuolo;
+	public Utente (Long idAlunno, String nome, String cognome, String codiceFiscale, String classe,LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,Boolean active,int idRuolo) {
+		this.idAlunno=idAlunno;
 		this.nome=nome;
 		this.cognome=cognome;
 		this.codiceFiscale=codiceFiscale;
 		this.classe=classe;
 		this.dataCreazione=dataCreazione;
 		this.dataModifica=dataModifica;
+		this.username=username;
+		this.password=password;
+		this.active=active;
+		this.idRuolo=idRuolo;
 	}
 	
 	//metodi getter e setter
@@ -103,13 +107,13 @@ public class Utente {
 		this.password=password;
 	}
 	
-	public boolean getActive() {return active;}
-	public void setActive(boolean active) {
+	public Boolean getActive() {return active;}
+	public void setActive(Boolean active) {
 		this.active=active;
 	}
 	
-	public Integer getIdRuolo() {return idRuolo;}
-	public void setIdRuolo(Integer idRuolo) {
+	public int getIdRuolo() {return idRuolo;}
+	public void setIdRuolo(int idRuolo) {
 		this.idRuolo=idRuolo;
 	}
 }
