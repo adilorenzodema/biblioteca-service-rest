@@ -12,36 +12,37 @@ import jakarta.persistence.Id;
 public class Utente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idalunno")
 	private Long idAlunno;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="nome")
 	private String nome;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="cognome")
 	private String cognome;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="codicefiscale")
 	private String codiceFiscale;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="classe")
 	private String classe;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="datacreazione")
 	private LocalDateTime dataCreazione;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="datamodifica")
 	private LocalDateTime dataModifica;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="username")
 	private String username;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="password")
 	private String password;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="active")
 	private boolean active;
 	
-	@Column (nullable=false)
+	@Column (nullable=false,name="idruolo")
 	private int idRuolo;
 	
 	

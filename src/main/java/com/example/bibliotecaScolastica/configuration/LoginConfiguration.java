@@ -14,29 +14,8 @@ public class LoginConfiguration {
         return new BCryptPasswordEncoder();
     }
 
-    // Bean di esempio per credenziali hardcoded (solo per testing)
-    @Bean
-    public UserCredentials defaultUserCredentials() {
-        return new UserCredentials("admin", encodePassword("password123"));
-    }
-
     // Metodo di utilità per codificare una password
     public String encodePassword(String rawPassword) {
         return passwordEncoder().encode(rawPassword);
-    }
-
-    // Classe interna per memorizzare credenziali (puoi sostituirla con un Database)
-    public static class UserCredentials {
-        private String username;
-        private String encodedPassword;
-
-        public UserCredentials(String username, String encodedPassword) {
-            this.username = username;
-            this.encodedPassword = encodedPassword;
-        }
-
-        // Getter
-        public String getUsername() { return username; }
-        public String getEncodedPassword() { return encodedPassword; }
     }
 }
