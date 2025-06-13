@@ -43,8 +43,9 @@ public class Utente {
 	private boolean active;
 	
 	@Column (nullable=false,name="idruolo")
-	private int idRuolo;
+	private Integer idRuolo;
 	
+	public Utente() { }
 	
 	public Utente (int idRuolo, String nome, String cognome, String codiceFiscale, String classe,LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,boolean active) {
 		this.idRuolo=idRuolo;
@@ -107,9 +108,8 @@ public class Utente {
 		this.active=active;
 	}
 	
-	public int getIdRuolo() {return idRuolo;}
-	public void setIdRuolo(int idRuolo) {
+	public Integer getIdRuolo() {return idRuolo;}
+	public void setIdRuolo(Integer idRuolo) {
 		this.idRuolo=idRuolo;
 	}
-	
 }

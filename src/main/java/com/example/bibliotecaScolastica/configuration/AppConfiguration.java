@@ -14,7 +14,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import static org.springframework.security.config.Customizer.withDefaults;
 
 @Configuration
-public class LibriConfiguration {
+public class AppConfiguration {
 	@Bean
 	public DataSource dataSource() {
 		return DataSourceBuilder.create().driverClassName("org.postgresql.Driver")
@@ -29,7 +29,7 @@ public class LibriConfiguration {
 		http.authorizeHttpRequests(requests ->
 			requests
 				.requestMatchers("/api/**").permitAll()
-				.anyRequest().denyAll()
+				.anyRequest().authenticated()
 		);
 		return http.build();
 	}
