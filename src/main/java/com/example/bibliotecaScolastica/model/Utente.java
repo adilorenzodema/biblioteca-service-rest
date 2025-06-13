@@ -108,7 +108,7 @@ public class Utente {
 	}
 	
 	public int getIdRuolo() {return idRuolo;}
-	public void setIdRuolo() {
+	public void setIdRuolo(int idRuolo) {
 		this.idRuolo=idRuolo;
 	}
 	
