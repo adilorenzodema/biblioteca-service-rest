@@ -19,5 +19,7 @@ public class LibriController {
         return libriService.getAllLibri();
     }
 	
-
+    
+    //TODO api getMyLibri (input username) restutisce list<Libro> 
+    
 }
