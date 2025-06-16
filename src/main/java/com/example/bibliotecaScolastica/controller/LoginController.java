@@ -25,7 +25,7 @@ public class LoginController {
             boolean loginCorretto = loginService.checkUser(user.getUsername(), user.getPassword());
             return ResponseEntity.ok(loginCorretto);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
 }
