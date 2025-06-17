@@ -17,7 +17,8 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 	@Query(value="select * from schemabiblioteca.libro",nativeQuery=true)
 	List<Libro> findAllNative();
 	
-    List<Libro> findByUsername(String username);
+	@Query(value = "SELECT * FROM schemabiblioteca.libro WHERE idutente = :utenteId", nativeQuery = true)
+	List<Libro> findAllByUtenteId(@Param("idutente") Long utenteId);
 	
 	@Modifying
 	@Transactional

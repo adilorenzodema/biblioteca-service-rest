@@ -30,8 +30,8 @@ public class LibriController {
     }
 	
     @GetMapping("/getMyLibri")
-    public List<Libro> getLibriPerUtente(@RequestParam String username) {
-        return libriService.getLibriPerUtente(username);
+    public List<Libro> getLibriPerUtente(@RequestParam Long idUtente) {
+        return libriService.getLibriPerUtente(idUtente);
     }
         
     

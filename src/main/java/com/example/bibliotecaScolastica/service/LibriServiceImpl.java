@@ -23,10 +23,9 @@ public class LibriServiceImpl implements LibriService {
 		return libriRepository.findAllNative();
 	}
 	@Override
-    public List<Libro> getLibriPerUtente(String username) {
-        return libriRepository.findByUsername(username);
-    }
-	
+    public List<Libro> getLibriPerUtente(Long idUtente) {
+        return libriRepository.findAllByUtenteId(idUtente);
+	}
 	@Override
 	public void inizializzaPrestito(Long idLibro, Long idAlunno) throws Exception {
 		Libro libro = libriRepository.findById(idLibro)
