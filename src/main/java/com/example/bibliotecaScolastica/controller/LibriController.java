@@ -31,6 +31,11 @@ public class LibriController {
         return libriService.getAllLibri();
     }
 	
+    @GetMapping("/getMyLibri")
+    public List<Libro> getLibriPerUtente(@RequestParam String username) {
+        return libriService.getLibriPerUtente(username);
+    }
+
     
     //TODO api getMyLibri (input username) restutisce list<Libro> 
     

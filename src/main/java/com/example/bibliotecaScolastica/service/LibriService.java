@@ -10,3 +10,8 @@ public interface LibriService {
 	void inizializzaPrestito(Long idLibro, Long idAlunno)throws Exception ;
 
 }
+
+public List<Libro> getLibriPerUtente(String username) {
+    
+}
+
