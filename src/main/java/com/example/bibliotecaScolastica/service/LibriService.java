@@ -10,8 +10,6 @@ public interface LibriService {
 }
 
 public List<Libro> getLibriPerUtente(String username) {
-    // Logica per recuperare i libri associati a un utente
-    // Può essere da un repository o da una lista mock
-    return libroRepository.findByUsername(username); // esempio con repository
+    
 }
 

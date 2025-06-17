@@ -47,8 +47,8 @@ public class Utente {
 	
 	public Utente() { }
 	
-	public Utente (Long idAlunno, String nome, String cognome, String codiceFiscale, String classe,LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,Boolean active,int idRuolo) {
-		this.idAlunno=idAlunno;
+	public Utente (Long idUtente, String nome, String cognome, String codiceFiscale, String classe,LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,Boolean active,int idRuolo) {
+		this.idUtente=idUtente;
 		this.nome=nome;
 		this.cognome=cognome;
 		this.codiceFiscale=codiceFiscale;
@@ -62,9 +62,9 @@ public class Utente {
 	}
 	
 	//metodi getter e setter
-	public Long getIdUtente() {return idAlunno;}
-	public void setIdUtente(Long idAlunno) {
-		this.idAlunno=idAlunno;
+	public Long getIdUtente() {return idUtente;}
+	public void setIdUtente(Long idUtente) {
+		this.idUtente=idUtente;
 	}
 	
 	public String getNome() {return nome;}
