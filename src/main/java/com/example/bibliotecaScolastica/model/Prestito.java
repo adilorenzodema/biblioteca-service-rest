@@ -16,8 +16,8 @@ public class Prestito {
 	@Column(nullable=false, name="idlibro")
 	private Long idLibro;
 	
-	@Column(nullable=false,name="idalunno")
-	private Long idAlunno;
+	@Column(nullable=false,name="idutente")
+	private Long idUtente;
 	
 	@Column(nullable=false,name="datainizio")
 	private LocalDateTime dataInizio;
@@ -31,18 +31,18 @@ public class Prestito {
 	@Column(nullable=false,name="datamodifica")
 	private LocalDateTime dataModifica;
 	
-	@Column(nullable=false,name="datarestituzione")
-	private LocalDateTime dataRestituitizone;
+	@Column(nullable=true,name="datarestituzione")
+	private LocalDateTime dataRestituzione;
 	
 	//Costruttori
-	public Prestito( Long idLibro, Long idAlunno,LocalDateTime dataInzio, LocalDateTime dataFine, LocalDateTime dataCreazione, LocalDateTime dataModifica,LocalDateTime dataRestituitizone) {
+	public Prestito( Long idLibro, Long idUtente,LocalDateTime dataInzio, LocalDateTime dataFine, LocalDateTime dataCreazione, LocalDateTime dataModifica,LocalDateTime dataRestituzione) {
 		this.idLibro=idLibro;
-		this.idAlunno=idAlunno;
+		this.idUtente=idUtente;
 		this.dataInizio=dataInzio;
 		this.dataFine=dataFine;
 		this.dataCreazione=dataCreazione;
 		this.dataModifica=dataModifica;
-		this.dataRestituitizone=dataRestituitizone;
+		this.dataRestituzione=dataRestituzione;
 	}
 	//Metodi getter e setter
 	public Long getIdPrestito() {return idPrestito;}
@@ -55,9 +55,9 @@ public class Prestito {
 		this.idLibro=idLibro;
 	}
 	
-	public Long getIdUtente() {return idAlunno;}
-	public void setIdUtente(Long idAlunno) {
-		this.idAlunno=idAlunno;
+	public Long getIdUtente() {return idUtente;}
+	public void setIdUtente(Long idUtente) {
+		this.idUtente=idUtente;
 	}
 	
 	public LocalDateTime getDataInzio(){return dataInizio;}
@@ -80,8 +80,8 @@ public class Prestito {
 		this.dataModifica=dataModifica;
 	}
 	
-	public LocalDateTime getDataRestituzione() {return getDataRestituzione();}
+	public LocalDateTime getDataRestituzione() {return dataRestituzione;}
 	public void setDatarestituzione(LocalDateTime dataRestituzione) {
-		this.dataRestituitizone=dataRestituzione;
+		this.dataRestituzione=dataRestituzione;
 	}
 }

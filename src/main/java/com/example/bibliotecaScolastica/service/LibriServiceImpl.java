@@ -23,25 +23,36 @@ public class LibriServiceImpl implements LibriService {
 		return libriRepository.findAllNative();
 	}
 	@Override
-    public List<Libro> getLibriPerUtente(Long idUtente) {
-        return libriRepository.findAllByUtenteId(idUtente);
+	public List<Libro> getLibriInPrestitoPerUtente(Long idUtente) {
+	    return libriRepository.findLibriInPrestitoByUtenteId(idUtente);
 	}
 	@Override
 	public void inizializzaPrestito(Long idLibro, Long idAlunno) throws Exception {
-		Libro libro = libriRepository.findById(idLibro)
-                .orElseThrow(() -> new EntityNotFoundException("Libro non trovato"));
-		LocalDateTime dataOdierna=LocalDateTime.now();
-		LocalDateTime dataScadenza=dataOdierna.plusDays(30);
-		LocalDateTime dataCreazione=LocalDateTime.now();
-		LocalDateTime dataModifica=LocalDateTime.now();
-		//Controlla disponibilità
-		if(!(libro.getDisponibilita()==0)) {
-			throw new IllegalStateException("Libro non disponibile");
-		}
-		libriRepository.concediPrestito(libro.getIdLibro(),idAlunno,dataOdierna,dataScadenza,dataCreazione,null);
-		int disponibilitaLibro=libro.getDisponibilita();
-		libro.setDisponibilita(disponibilitaLibro);
+	    Libro libro = libriRepository.findById(idLibro)
+	            .orElseThrow(() -> new EntityNotFoundException("Libro non trovato"));
+
+	    if (libro.getDisponibilita() <= 0) {
+	        throw new IllegalStateException("Libro non disponibile");
+	    }
+
+	    LocalDateTime now = LocalDateTime.now();
+	    LocalDateTime dataFine = now.plusDays(30);
+
+	    libriRepository.concediPrestito(
+	        idLibro,
+	        idAlunno,
+	        now,
+	        dataFine,
+	        now,
+	        now,
+	        null // data restituzione ancora nulla
+	    );
+
+	    // Decrementa disponibilità
+	    libro.setDisponibilita(libro.getDisponibilita() - 1);
+	    libriRepository.save(libro);
 	}
+
 	public Prestito getPrestito() {return prestito;}
 	
 	

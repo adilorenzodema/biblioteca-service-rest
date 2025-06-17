@@ -6,13 +6,16 @@ public class infoPrestito {
 	private String nome;
 	private String cognome;
 	private String classe;
+	private String codiceFiscale;
 	
-	public infoPrestito(Long idUtente, Long idLibro,String nome, String cognome,String classe) {
+	public infoPrestito(Long idUtente, Long idLibro,String nome, String cognome,String classe,String codiceFiscale) {
 		this.idLibro=idLibro;
 		this.idUtente=idUtente;
 		this.nome=nome;
 		this.cognome=cognome;
 		this.classe=classe;
+		this.codiceFiscale=codiceFiscale;
+		
 	}
 	
 	//Metodi getter e setter
@@ -35,5 +38,9 @@ public class infoPrestito {
 	public String getClasse() {return classe;}
 	public void setClasse(String classe) {
 		this.classe=classe;
+	}
+	public String getCodiceFiscale() {return codiceFiscale;}
+	public void setCodiceFiscale(String codiceFiscale) {
+		this.codiceFiscale=codiceFiscale;
 	}
 }
