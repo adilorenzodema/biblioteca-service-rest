@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bibliotecaScolastica.model.User;
+import com.example.bibliotecaScolastica.model.Utente;
 import com.example.bibliotecaScolastica.service.LoginService;
 
 
@@ -22,8 +23,8 @@ public class LoginController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody User user) {
         try {
-            boolean loginCorretto = loginService.checkUser(user.getUsername(), user.getPassword());
-            return ResponseEntity.ok(loginCorretto);
+            Utente utenteConnesso = loginService.checkUser(user.getUsername(), user.getPassword());
+            return ResponseEntity.ok(utenteConnesso);
         } catch (IllegalArgumentException e) {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }

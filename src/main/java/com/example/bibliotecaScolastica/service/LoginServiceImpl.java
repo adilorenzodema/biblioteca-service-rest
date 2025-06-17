@@ -12,14 +12,14 @@ public class LoginServiceImpl implements LoginService{
 	}
 	
 	@Override
-	public boolean checkUser(String username, String password) {
+	public Utente checkUser(String username, String password) {
 	    Utente utente = this.loginRepository.checkUtente(username);
 	    if(utente == null) {
 	        throw new IllegalArgumentException("Credenziali errate");
 	    }
 	    
 	    if (utente.getPassword().equals(password)) {
-	        return true;
+	        return utente;
 	    } else {
 	        throw new IllegalArgumentException("Password errata");
 	    }
