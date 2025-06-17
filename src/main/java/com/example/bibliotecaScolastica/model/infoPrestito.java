@@ -28,8 +28,8 @@ public class infoPrestito {
 	public void setNome(String nome) {
 		this.nome=nome;
 	}
-	public String getCognome() {return Cognome;}
-	public void setCognome(String Cognome) {
+	public String getCognome() {return cognome;}
+	public void setCognome(String cognome) {
 		this.cognome=cognome;
 	}
 	public String getClasse() {return classe;}

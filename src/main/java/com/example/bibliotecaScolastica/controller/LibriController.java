@@ -11,8 +11,6 @@ import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,13 +33,10 @@ public class LibriController {
     public List<Libro> getLibriPerUtente(@RequestParam String username) {
         return libriService.getLibriPerUtente(username);
     }
-
-    
-    //TODO api getMyLibri (input username) restutisce list<Libro> 
-    
+        
     
     @PostMapping("/concedi")
-    public ResponseEntity<?> concederePrestito(@RequestBody infoPrestito infoPrestito, @AuthenticationPrincipal User user ) throws Exception{
+    public ResponseEntity<?> concederePrestito(@RequestBody infoPrestito infoPrestito) throws Exception{
     	try {
     		libriService.inizializzaPrestito(infoPrestito.getIdLibro(),infoPrestito.getIdUtente());
     		return ResponseEntity.status(HttpStatus.CREATED).body("Prestito avvenuto con successo");
