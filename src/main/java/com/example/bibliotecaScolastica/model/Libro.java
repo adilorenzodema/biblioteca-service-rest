@@ -38,12 +38,15 @@ public class Libro {
 	@Column(name="link")
 	private String link;
 	
+	@Column(name = "username", nullable = false)
+	private String username;
+
 	//Costruttore vuoto richiesto da JPA
     public Libro() {
     }
 	
 	//Costruttore
-	public Libro(String titolo, String autore,String casaEditrice,String genere, String IBAN, int disponibilita,LocalDateTime dataCreazione,LocalDateTime dataModifica,String Link) {
+	public Libro(String titolo, String autore,String casaEditrice,String genere, String IBAN, int disponibilita,LocalDateTime dataCreazione,LocalDateTime dataModifica,String Link,String username) {
 		this.titolo=titolo;
 		this.autore=autore;
 		this.casaEditrice=casaEditrice;
@@ -53,6 +56,7 @@ public class Libro {
 		this.dataCreazione=dataCreazione;
 		this.dataModifica=dataModifica;
 		this.link=link;
+		this.username = username;
 	}
 	
 	//Metodi getter e setter
@@ -104,5 +108,13 @@ public class Libro {
 		this.link=link;
 	}
 	
+	public String getUsername() {
+	    return username;
+	}
+
+	public void setUsername(String username) {
+	    this.username = username;
+	}
+
 
 }

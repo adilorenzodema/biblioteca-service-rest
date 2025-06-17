@@ -10,4 +10,8 @@ import com.example.bibliotecaScolastica.model.Libro;
 public interface LibriRepository extends JpaRepository<Libro,Long> {
 	@Query(value="select * from schemabiblioteca.libro",nativeQuery=true)
 	List<Libro> findAllNative();
+	
+	List<Libro> findByUsername(String username);
+
 }
+

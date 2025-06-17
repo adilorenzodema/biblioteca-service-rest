@@ -15,5 +15,11 @@ public class LibriServiceImpl implements LibriService {
 	public List<Libro> getAllLibri() {
 		return libriRepository.findAllNative();
 	}
+	
+	@Override
+	public List<Libro> getLibriPerUtente(String username) {
+	    return libriRepository.findByUsername(username);
+	}
+
 
 }

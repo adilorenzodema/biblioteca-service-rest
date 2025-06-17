@@ -12,8 +12,8 @@ import jakarta.persistence.Id;
 public class Utente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="idalunno")
-	private Long idAlunno;
+	@Column(name="idutente")
+	private Long idUtente;
 	
 	@Column(name="nome")
 	private String nome;
