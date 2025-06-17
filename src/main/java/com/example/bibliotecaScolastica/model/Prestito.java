@@ -13,32 +13,36 @@ public class Prestito {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idPrestito;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, name="idlibro")
 	private Long idLibro;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="idalunno")
 	private Long idAlunno;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="datainizio")
 	private LocalDateTime dataInizio;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="datafine")
 	private LocalDateTime dataFine;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="datacreazione")
 	private LocalDateTime dataCreazione;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="datamodifica")
 	private LocalDateTime dataModifica;
 	
-	public Prestito(Long idPrestito, Long idLibro, Long idAlunno,LocalDateTime dataInzio, LocalDateTime dataFine, LocalDateTime dataCreazione, LocalDateTime dataModifica) {
-		this.idPrestito=idPrestito;
+	@Column(nullable=false,name="datarestituzione")
+	private LocalDateTime dataRestituitizone;
+	
+	//Costruttori
+	public Prestito( Long idLibro, Long idAlunno,LocalDateTime dataInzio, LocalDateTime dataFine, LocalDateTime dataCreazione, LocalDateTime dataModifica,LocalDateTime dataRestituitizone) {
 		this.idLibro=idLibro;
 		this.idAlunno=idAlunno;
 		this.dataInizio=dataInzio;
 		this.dataFine=dataFine;
 		this.dataCreazione=dataCreazione;
 		this.dataModifica=dataModifica;
+		this.dataRestituitizone=dataRestituitizone;
 	}
 	//Metodi getter e setter
 	public Long getIdPrestito() {return idPrestito;}
@@ -74,5 +78,10 @@ public class Prestito {
 	public LocalDateTime getDataModifica() {return dataModifica;}
 	public void setDataModifica(LocalDateTime dataModifica) {
 		this.dataModifica=dataModifica;
+	}
+	
+	public LocalDateTime getDataRestituzione() {return getDataRestituzione();}
+	public void setDatarestituzione(LocalDateTime dataRestituzione) {
+		this.dataRestituitizone=dataRestituzione;
 	}
 }
