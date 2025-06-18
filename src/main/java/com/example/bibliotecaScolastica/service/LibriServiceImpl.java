@@ -54,7 +54,16 @@ public class LibriServiceImpl implements LibriService {
 	}
 
 	public Prestito getPrestito() {return prestito;}
-	
-	
+		
+	@Override
+	public void deleteLibro(Long idLibro) {
+	    try {
+	        libriRepository.deleteLibro(idLibro);
+	    } catch (Exception e) {
+	        // Il DB solleva un'eccezione se il libro è in prestito (vincolo FK)
+	        throw new IllegalStateException("Impossibile cancellare libro: si è verificato un errore.");
+	    }
+	}
+
 
 }

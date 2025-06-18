@@ -47,5 +47,17 @@ public class LibriController {
         }
     	
     }
+    
+    @DeleteMapping("/{idLibro}")
+    public ResponseEntity<?> deleteLibro(@PathVariable Long idLibro) {
+        try {
+            libriService.deleteLibro(idLibro);
+            return ResponseEntity.ok("Libro cancellato con successo");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                                 .body("Errore durante la cancellazione: " + e.getMessage());
+        }
+    }
 
+    
 }

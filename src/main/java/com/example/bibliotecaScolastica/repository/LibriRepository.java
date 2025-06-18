@@ -34,4 +34,10 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 	    @Param("dataModifica") LocalDateTime dataModifica,
 	    @Param("dataRestituzione") LocalDateTime dataRestituzione
 	);
+	
+	@Modifying
+	@Transactional
+	@Query(value = "DELETE FROM schemabiblioteca.libro WHERE idlibro = :idlibro", nativeQuery = true)
+	void deleteLibro(@Param("idlibro") Long idLibro);
+	
 }

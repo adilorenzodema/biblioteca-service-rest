@@ -10,4 +10,7 @@ public interface LibriService {
 	void inizializzaPrestito(Long idLibro, Long idAlunno)throws Exception ;
 	
 	List<Libro> getLibriInPrestitoPerUtente(Long idUtente);
+	
+	void deleteLibro(Long idLibro);
+	
 }
