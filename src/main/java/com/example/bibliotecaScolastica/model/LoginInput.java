@@ -1,10 +1,11 @@
 package com.example.bibliotecaScolastica.model;
 
-public class User {
+public class LoginInput {
 	private String username;
 	private String password;
 	
-	public User (String username, String password) {
+	
+	public LoginInput (String username, String password) {
 		this.username=username;
 		this.password=password;
 	}

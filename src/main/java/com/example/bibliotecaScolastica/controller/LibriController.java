@@ -1,7 +1,7 @@
 package com.example.bibliotecaScolastica.controller;
 import  com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.Prestito;
-import com.example.bibliotecaScolastica.model.User;
+import com.example.bibliotecaScolastica.model.LoginInput;
 import com.example.bibliotecaScolastica.model.Utente;
 import com.example.bibliotecaScolastica.model.infoPrestito;
 import com.example.bibliotecaScolastica.service.LibriService;
