@@ -2,6 +2,7 @@ package com.example.bibliotecaScolastica.service;
 
 import java.util.List;
 
+import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.Libro;
 
 public interface LibriService {
@@ -18,6 +19,6 @@ public interface LibriService {
 	void deleteLibro(Long idLibro);
 	
 	//API aggiunta libro
-	void addLibro(Libro libro);
+	void addLibro(AggiungiLibroDTO aggiuniLibroDTO);
 	
 }

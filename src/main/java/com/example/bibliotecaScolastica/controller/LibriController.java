@@ -1,4 +1,5 @@
 package com.example.bibliotecaScolastica.controller;
+import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import  com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.infoPrestito;
 import com.example.bibliotecaScolastica.service.LibriService;
@@ -56,9 +57,9 @@ public class LibriController {
     }
     
     @PostMapping("/aggiungi")
-    public ResponseEntity<?> aggiungereLibro(@RequestBody Libro libro) throws Exception{
+    public ResponseEntity<?> aggiungereLibro(@RequestBody AggiungiLibroDTO aggiungiLibroDTO) throws Exception{
     	try {
-    		libriService.addLibro(libro);
+    		libriService.addLibro(aggiungiLibroDTO);
     		return ResponseEntity.status(HttpStatus.CREATED).body("Libro aggiunto con successo");
     	}catch(EntityNotFoundException e) {
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

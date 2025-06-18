@@ -1,4 +1,5 @@
 package com.example.bibliotecaScolastica.service;
+import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.Prestito;
 import com.example.bibliotecaScolastica.model.Utente;
@@ -66,9 +67,9 @@ public class LibriServiceImpl implements LibriService {
 	}
 
 	@Override
-	public void addLibro (Libro libro) {
+	public void addLibro (AggiungiLibroDTO aggiungiLibroDTO) {
 		 LocalDateTime now = LocalDateTime.now();
-		 libriRepository.addLibro(libro.getTitolo(), libro.getAutore(), libro.getCasaEditrice(),libro.getGenere(), libro.getIban(),libro.getDisponibilita(),now, null, libro.getLink());
+		 libriRepository.addLibro(aggiungiLibroDTO.getTitolo(), aggiungiLibroDTO.getAutore(), aggiungiLibroDTO.getCasaEditrice(),aggiungiLibroDTO.getGenere(), aggiungiLibroDTO.getIban(),aggiungiLibroDTO.getDisponibilita(),now, null, aggiungiLibroDTO.getLink());
 	}
 
 }
