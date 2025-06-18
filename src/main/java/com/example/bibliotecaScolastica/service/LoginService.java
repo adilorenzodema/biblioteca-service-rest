@@ -1,7 +1,7 @@
 package com.example.bibliotecaScolastica.service;
 
-import com.example.bibliotecaScolastica.model.Utente;
+import com.example.bibliotecaScolastica.model.UtenteDTO;
 
 public interface LoginService {
-	  Utente checkUser(String username, String password); 
+	  UtenteDTO checkUser(String username, String password); 
 }

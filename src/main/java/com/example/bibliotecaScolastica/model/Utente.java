@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 
 @Entity
 public class Utente {
@@ -42,8 +43,11 @@ public class Utente {
 	@Column(name="active")
 	private Boolean active;
 	
-	@Column (name="idruolo")
-	private int idRuolo;
+	@Column(name = "idruolo", insertable = false, updatable = false)
+    private int idRuolo;
+	
+	@Transient
+    private String nomeRuolo;
 	
 	public Utente() { }
 	
@@ -115,5 +119,12 @@ public class Utente {
 	public int getIdRuolo() {return idRuolo;}
 	public void setIdRuolo(int idRuolo) {
 		this.idRuolo=idRuolo;
+	}
+	public String getNomeRuolo() {
+	    return nomeRuolo;
+	}
+
+	public void setNomeRuolo(String nomeRuolo) {
+	    this.nomeRuolo = nomeRuolo;
 	}
 }
