@@ -14,7 +14,6 @@ import java.util.List;
 public class LibriServiceImpl implements LibriService {
 	private final LibriRepository libriRepository;
 	private Prestito prestito;
-	private Utente utente;
 	public LibriServiceImpl(LibriRepository libriRepository) {
 		this.libriRepository=libriRepository;
 	}
@@ -24,7 +23,8 @@ public class LibriServiceImpl implements LibriService {
 	}
 	@Override
 	public List<Libro> getLibriInPrestitoPerUtente(Long idUtente) {
-	    return libriRepository.findLibriInPrestitoByUtenteId(idUtente);
+		return libriRepository.findLibriInPrestitoByUtenteId(idUtente);
+	    
 	}
 	@Override
 	public void inizializzaPrestito(Long idLibro, Long idAlunno) throws Exception {
@@ -65,5 +65,10 @@ public class LibriServiceImpl implements LibriService {
 	    }
 	}
 
+	@Override
+	public void addLibro (Libro libro) {
+		 LocalDateTime now = LocalDateTime.now();
+		 libriRepository.addLibro(libro.getTitolo(), libro.getAutore(), libro.getCasaEditrice(),libro.getGenere(), libro.getIban(),libro.getDisponibilita(),now, null, libro.getLink());
+	}
 
 }

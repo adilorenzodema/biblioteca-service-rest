@@ -21,7 +21,6 @@ public class LoginServiceImpl implements LoginService{
         }
         
         if (utente.getPassword().equals(password)) {
-            // Popola tutti i campi necessari nel DTO
             return new UtenteDTO(
                 utente.getIdUtente(),
                 utente.getNome(),
@@ -34,7 +33,7 @@ public class LoginServiceImpl implements LoginService{
                 utente.getPassword(),
                 utente.getActive(),
                 utente.getIdRuolo(),
-                utente.getNomeRuolo() // Questo ora è popolato dalla query
+                utente.getNomeRuolo()
             );
         } else {
             throw new IllegalArgumentException("Password errata");

@@ -2,6 +2,8 @@ package com.example.bibliotecaScolastica.model;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,8 +34,10 @@ public class Libro {
 	private int disponibilita;
 	
 	@Column(nullable=false, name="datacreazione")
+	@JsonProperty("dataCreazione")
 	private LocalDateTime dataCreazione;
 	
+	@JsonProperty("dataModifica")
 	@Column(nullable=false, name="datamodifica")
 	private LocalDateTime dataModifica;
 	
@@ -45,7 +49,7 @@ public class Libro {
     }
 	
 	//Costruttore
-	public Libro(String titolo, String autore,String casaEditrice,String genere, String IBAN, int disponibilita,LocalDateTime dataCreazione,LocalDateTime dataModifica,String Link) {
+	public Libro(String titolo, String autore,String casaEditrice,String genere, String IBAN, int disponibilita,LocalDateTime dataCreazione,LocalDateTime dataModifica,String link) {
 		this.titolo=titolo;
 		this.autore=autore;
 		this.casaEditrice=casaEditrice;
@@ -74,7 +78,7 @@ public class Libro {
 	}
 	
 	public String getCasaEditrice() {return casaEditrice;}
-	public void setCasaEditricie(String casaEditrice) {
+	public void setCasaEditrice(String casaEditrice) {
 		this.casaEditrice=casaEditrice;
 	}
 	public String getGenere() {return genere;}
@@ -82,10 +86,11 @@ public class Libro {
 		this.genere=genere;
 	}
 	
-	public String getIBAN() {return iban;}
-	public void setCodiceIban(String iban){
-		this.iban=iban;
+	public String getIban() { return iban; }
+	public void setIban(String iban) {
+	    this.iban = iban;
 	}
+
 	
 	public int getDisponibilita() { return disponibilita;}
 	public void setDisponibilita (int disponibilita) {

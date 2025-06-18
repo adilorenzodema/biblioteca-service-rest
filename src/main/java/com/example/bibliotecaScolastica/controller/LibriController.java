@@ -1,11 +1,7 @@
 package com.example.bibliotecaScolastica.controller;
 import  com.example.bibliotecaScolastica.model.Libro;
-import com.example.bibliotecaScolastica.model.Prestito;
-import com.example.bibliotecaScolastica.model.LoginInput;
-import com.example.bibliotecaScolastica.model.Utente;
 import com.example.bibliotecaScolastica.model.infoPrestito;
 import com.example.bibliotecaScolastica.service.LibriService;
-import com.example.bibliotecaScolastica.service.LoginService;
 
 import jakarta.persistence.EntityNotFoundException;
 
@@ -57,6 +53,19 @@ public class LibriController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                                  .body("Errore durante la cancellazione: " + e.getMessage());
         }
+    }
+    
+    @PostMapping("/aggiungi")
+    public ResponseEntity<?> aggiungereLibro(@RequestBody Libro libro) throws Exception{
+    	try {
+    		libriService.addLibro(libro);
+    		return ResponseEntity.status(HttpStatus.CREATED).body("Libro aggiunto con successo");
+    	}catch(EntityNotFoundException e) {
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    	}catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore del server");
+        }
+    	
     }
 
     
