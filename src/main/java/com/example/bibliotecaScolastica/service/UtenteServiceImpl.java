@@ -1,6 +1,8 @@
 package com.example.bibliotecaScolastica.service;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -38,6 +40,7 @@ public class UtenteServiceImpl implements UtenteService{
 		@Override
 		public void addUtente(UtenteDTO utenteDTO) {
 			 LocalDateTime now = LocalDateTime.now();
-			 utenteRepository.addUtente(utenteDTO.getNome(),utenteDTO.getCognome(),utenteDTO.getCodiceFiscale(),utenteDTO.getClasse(),utenteDTO.getDataCreazione(),utenteDTO.getDataModifica(),utenteDTO.getUsername(),utenteDTO.getPassword(),utenteDTO.getActive(),utenteDTO.getIdRuolo());
+			 Timestamp timestamp = Timestamp.valueOf(now);
+			 utenteRepository.addUtente(utenteDTO.getNome(),utenteDTO.getCognome(),utenteDTO.getCodiceFiscale(),utenteDTO.getClasse(),timestamp,null,utenteDTO.getUsername(),utenteDTO.getPassword(),true,utenteDTO.getIdRuolo());
 		}
 }
