@@ -1,5 +1,7 @@
 package com.example.bibliotecaScolastica.repository;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -30,4 +32,22 @@ public interface UtenteRepository extends JpaRepository<Utente, Long> {
 	@Transactional
 	@Query(value = "DELETE FROM schemabiblioteca.utente WHERE idutente = :idutente", nativeQuery = true)
 	void deleteUtente(@Param("idutente") Long idUtente);
+	
+	//API aggiunta libro
+	@Modifying
+	@Transactional
+	@Query(value = "INSERT INTO schemabiblioteca.utente (nome, cognome, codicefiscale, classe, datacreazione, datamodifica, username, password, active, idruolo) " +
+	           "VALUES (:nome, :cognome, :codiceFiscale, :classe,:dataCreazione, :dataModifica, :username, :password, :active, :idRuolo)", nativeQuery = true)
+	void addUtente(
+		@Param("nome") String nome,
+		@Param("cognome") String cognome,
+		@Param("codiceFiscale") String codiceFiscale,
+		@Param("classe") String classe,
+	 	@Param("dataCreazione") Timestamp timestamp,
+	 	@Param("dataModifica") Timestamp dataModifica,
+	 	@Param("username") String username,
+	 	@Param("password") String password,
+	 	@Param("active") boolean active,
+	 	@Param("idRuolo") int idRuolo
+	);
 }

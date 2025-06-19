@@ -43,8 +43,8 @@ public class Utente {
 	@Column(name="active")
 	private Boolean active;
 	
-	@Column(name = "idruolo", insertable = false, updatable = false)
-    private int idRuolo;
+	@Column(name = "idruolo")
+	private int idRuolo;
 	
 	@Transient
     private String nomeRuolo;

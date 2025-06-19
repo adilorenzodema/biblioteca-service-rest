@@ -20,6 +20,8 @@ public class UtenteDTO {
 	private int idRuolo;
 	private String nomeRuolo;
 	
+	public UtenteDTO() {
+    }
 	public UtenteDTO (Integer idUtente, String nome, String cognome, String codiceFiscale, String classe,Timestamp dataCreazione, Timestamp dataModifica,String username,String password,Boolean active,int idRuolo,String nomeRuolo) {
 		this.idUtente=idUtente;
 		this.nome=nome;

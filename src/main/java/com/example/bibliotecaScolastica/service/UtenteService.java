@@ -2,6 +2,7 @@ package com.example.bibliotecaScolastica.service;
 
 import java.util.List;
 
+import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.UtenteDTO;
 
 public interface UtenteService {
@@ -10,4 +11,7 @@ public interface UtenteService {
 	
 	//API rimozione utente
 	void deleteUtente(Long idUtente);
+	
+	//API aggiunta utente
+	void addUtente(UtenteDTO utenteDTO );
 }
