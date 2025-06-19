@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.List;
 import com.example.bibliotecaScolastica.model.Libro;
+import com.example.bibliotecaScolastica.model.Utente;
 
 import jakarta.transaction.Transactional;
 
@@ -63,4 +64,7 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 	 @Param("link") String link
 	);
 	
+	//API estrazione tutti gli utenti presenti 
+	@Query(value="select * from schemabiblioteca.utente",nativeQuery=true)
+	List<Utente> findAllUtenti();
 }

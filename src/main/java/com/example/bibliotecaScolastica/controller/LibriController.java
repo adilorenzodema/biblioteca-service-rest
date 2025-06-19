@@ -1,6 +1,7 @@
 package com.example.bibliotecaScolastica.controller;
 import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import  com.example.bibliotecaScolastica.model.Libro;
+import com.example.bibliotecaScolastica.model.Utente;
 import com.example.bibliotecaScolastica.model.infoPrestito;
 import com.example.bibliotecaScolastica.service.LibriService;
 
@@ -20,18 +21,20 @@ public class LibriController {
 	public LibriController(LibriService libriService) {
         this.libriService = libriService;
     }
-
+	
+	//API estrazione tutti i libri disponibili
     @GetMapping("/getAllLibri")
     public List<Libro> getTuttiILibri() {
         return libriService.getAllLibri();
     }
 	
+  //API estrazione i libri di un utente
     @GetMapping("/getMyLibri")
     public List<Libro> getLibriInPrestitoPerUtente(@RequestParam Long idUtente) {
         return libriService.getLibriInPrestitoPerUtente(idUtente);
     }
         
-    
+    //API concessione prestito
     @PostMapping("/concedi")
     public ResponseEntity<?> concederePrestito(@RequestBody infoPrestito infoPrestito) throws Exception{
     	try {
@@ -45,6 +48,7 @@ public class LibriController {
     	
     }
     
+    //API rimozione libro
     @DeleteMapping("/{idLibro}")
     public ResponseEntity<?> deleteLibro(@PathVariable Long idLibro) {
         try {
@@ -56,6 +60,7 @@ public class LibriController {
         }
     }
     
+    //API aggiunta libro
     @PostMapping("/aggiungi")
     public ResponseEntity<?> aggiungereLibro(@RequestBody AggiungiLibroDTO aggiungiLibroDTO) throws Exception{
     	try {
@@ -66,7 +71,12 @@ public class LibriController {
     	}catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore del server");
         }
-    	
+    }
+    
+    //API estrazione tutti gli utenti presenti
+    @GetMapping("/getAllUtenti")
+    public List<Utente> getTuttiUtenti() {
+        return libriService.getAllUtenti();
     }
 
     

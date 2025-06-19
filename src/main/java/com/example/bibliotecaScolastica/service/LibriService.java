@@ -4,15 +4,16 @@ import java.util.List;
 
 import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.Libro;
+import com.example.bibliotecaScolastica.model.Utente;
 
 public interface LibriService {
 	//API estrazione tutti i libri disponibili
 	List<Libro> getAllLibri();
 	
-	//API estrazione i libri di un utente
+	//API concessione prestito
 	void inizializzaPrestito(Long idLibro, Long idAlunno)throws Exception ;
 	
-	//API concessione prestito
+	//API estrazione i libri di un utente
 	List<Libro> getLibriInPrestitoPerUtente(Long idUtente);
 	
 	//API rimozione libro
@@ -21,4 +22,6 @@ public interface LibriService {
 	//API aggiunta libro
 	void addLibro(AggiungiLibroDTO aggiuniLibroDTO);
 	
+	//API estrazione tutti gli utenti presenti
+	List<Utente> getAllUtenti();
 }

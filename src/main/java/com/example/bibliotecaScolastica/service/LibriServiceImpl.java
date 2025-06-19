@@ -18,15 +18,21 @@ public class LibriServiceImpl implements LibriService {
 	public LibriServiceImpl(LibriRepository libriRepository) {
 		this.libriRepository=libriRepository;
 	}
+	
+	//API estrazione tutti i libri disponibili
 	@Override
 	public List<Libro> getAllLibri() {
 		return libriRepository.findAllNative();
 	}
+	
+	//API estrazione i libri di un utente
 	@Override
 	public List<Libro> getLibriInPrestitoPerUtente(Long idUtente) {
 		return libriRepository.findLibriInPrestitoByUtenteId(idUtente);
 	    
 	}
+	
+	//API concessione prestito
 	@Override
 	public void inizializzaPrestito(Long idLibro, Long idAlunno) throws Exception {
 	    Libro libro = libriRepository.findById(idLibro)
@@ -46,7 +52,7 @@ public class LibriServiceImpl implements LibriService {
 	        dataFine,
 	        now,
 	        now,
-	        null // data restituzione ancora nulla
+	        null 
 	    );
 
 	    // Decrementa disponibilità
@@ -55,7 +61,8 @@ public class LibriServiceImpl implements LibriService {
 	}
 
 	public Prestito getPrestito() {return prestito;}
-		
+	
+	//API rimozione libro
 	@Override
 	public void deleteLibro(Long idLibro) {
 	    try {
@@ -65,11 +72,18 @@ public class LibriServiceImpl implements LibriService {
 	        throw new IllegalStateException("Impossibile cancellare libro: si è verificato un errore.");
 	    }
 	}
-
+	
+	//API aggiunta libro
 	@Override
 	public void addLibro (AggiungiLibroDTO aggiungiLibroDTO) {
 		 LocalDateTime now = LocalDateTime.now();
 		 libriRepository.addLibro(aggiungiLibroDTO.getTitolo(), aggiungiLibroDTO.getAutore(), aggiungiLibroDTO.getCasaEditrice(),aggiungiLibroDTO.getGenere(), aggiungiLibroDTO.getIban(),aggiungiLibroDTO.getDisponibilita(),now, null, aggiungiLibroDTO.getLink());
+	}
+	
+	//API estrazione tutti gli utenti presenti
+	@Override
+	public List<Utente> getAllUtenti() {
+		return libriRepository.findAllUtenti();
 	}
 
 }
