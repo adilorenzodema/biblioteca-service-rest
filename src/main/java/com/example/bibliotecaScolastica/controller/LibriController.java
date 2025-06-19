@@ -2,6 +2,7 @@ package com.example.bibliotecaScolastica.controller;
 import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import  com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.Utente;
+import com.example.bibliotecaScolastica.model.UtenteDTO;
 import com.example.bibliotecaScolastica.model.infoPrestito;
 import com.example.bibliotecaScolastica.service.LibriService;
 
@@ -75,8 +76,8 @@ public class LibriController {
     
     //API estrazione tutti gli utenti presenti
     @GetMapping("/getAllUtenti")
-    public List<Utente> getTuttiUtenti() {
-        return libriService.getAllUtenti();
+    public List<UtenteDTO> getTuttiUtenti(@RequestParam(required=false)String nomeRuolo) {
+        return libriService.getAllUtenti(nomeRuolo);
     }
 
     

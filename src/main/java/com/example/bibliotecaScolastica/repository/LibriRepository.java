@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.Utente;
+import com.example.bibliotecaScolastica.model.UtenteDTO;
 
 import jakarta.transaction.Transactional;
 
@@ -65,6 +66,10 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 	);
 	
 	//API estrazione tutti gli utenti presenti 
-	@Query(value="select * from schemabiblioteca.utente",nativeQuery=true)
-	List<Utente> findAllUtenti();
-}
+	@Query(value = "SELECT u.*, r.ruolo AS nomeRuolo " + // Aggiunto spazio dopo nomeRuolo
+            "FROM schemabiblioteca.utente u " +
+            "LEFT JOIN schemabiblioteca.ruolo r ON u.idruolo = r.idruolo " +  
+            "WHERE (:nomeRuolo IS NULL OR r.ruolo = :nomeRuolo)",  
+            nativeQuery = true)
+	List<UtenteDTO> findAllUtenti(@Param("nomeRuolo") String nomeRuolo);
+	}

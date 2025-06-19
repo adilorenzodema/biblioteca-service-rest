@@ -3,6 +3,7 @@ import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.Prestito;
 import com.example.bibliotecaScolastica.model.Utente;
+import com.example.bibliotecaScolastica.model.UtenteDTO;
 import com.example.bibliotecaScolastica.repository.LibriRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -82,8 +83,8 @@ public class LibriServiceImpl implements LibriService {
 	
 	//API estrazione tutti gli utenti presenti
 	@Override
-	public List<Utente> getAllUtenti() {
-		return libriRepository.findAllUtenti();
+	public List<UtenteDTO> getAllUtenti(String nomeRuolo) {
+		return libriRepository.findAllUtenti(nomeRuolo);
 	}
 
 }

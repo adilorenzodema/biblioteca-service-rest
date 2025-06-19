@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.Utente;
+import com.example.bibliotecaScolastica.model.UtenteDTO;
 
 public interface LibriService {
 	//API estrazione tutti i libri disponibili
@@ -23,5 +24,5 @@ public interface LibriService {
 	void addLibro(AggiungiLibroDTO aggiuniLibroDTO);
 	
 	//API estrazione tutti gli utenti presenti
-	List<Utente> getAllUtenti();
+	List<UtenteDTO> getAllUtenti(String nomeRuolo);
 }
