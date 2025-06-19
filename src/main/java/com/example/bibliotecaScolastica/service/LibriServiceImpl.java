@@ -81,10 +81,6 @@ public class LibriServiceImpl implements LibriService {
 		 libriRepository.addLibro(aggiungiLibroDTO.getTitolo(), aggiungiLibroDTO.getAutore(), aggiungiLibroDTO.getCasaEditrice(),aggiungiLibroDTO.getGenere(), aggiungiLibroDTO.getIban(),aggiungiLibroDTO.getDisponibilita(),now, null, aggiungiLibroDTO.getLink());
 	}
 	
-	//API estrazione tutti gli utenti presenti
-	@Override
-	public List<UtenteDTO> getAllUtenti(String nomeRuolo) {
-		return libriRepository.findAllUtenti(nomeRuolo);
-	}
+	
 
 }

@@ -74,11 +74,7 @@ public class LibriController {
         }
     }
     
-    //API estrazione tutti gli utenti presenti
-    @GetMapping("/getAllUtenti")
-    public List<UtenteDTO> getTuttiUtenti(@RequestParam(required=false)String nomeRuolo) {
-        return libriService.getAllUtenti(nomeRuolo);
-    }
+    
 
     
 }

@@ -22,7 +22,4 @@ public interface LibriService {
 	
 	//API aggiunta libro
 	void addLibro(AggiungiLibroDTO aggiuniLibroDTO);
-	
-	//API estrazione tutti gli utenti presenti
-	List<UtenteDTO> getAllUtenti(String nomeRuolo);
 }

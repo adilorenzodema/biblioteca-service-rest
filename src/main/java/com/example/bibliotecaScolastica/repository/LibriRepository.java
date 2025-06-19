@@ -65,11 +65,5 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 	 @Param("link") String link
 	);
 	
-	//API estrazione tutti gli utenti presenti 
-	@Query(value = "SELECT u.*, r.ruolo AS nomeRuolo " + // Aggiunto spazio dopo nomeRuolo
-            "FROM schemabiblioteca.utente u " +
-            "LEFT JOIN schemabiblioteca.ruolo r ON u.idruolo = r.idruolo " +  
-            "WHERE (:nomeRuolo IS NULL OR r.ruolo = :nomeRuolo)",  
-            nativeQuery = true)
-	List<UtenteDTO> findAllUtenti(@Param("nomeRuolo") String nomeRuolo);
+	
 	}
