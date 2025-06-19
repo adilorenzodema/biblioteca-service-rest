@@ -7,4 +7,7 @@ import com.example.bibliotecaScolastica.model.UtenteDTO;
 public interface UtenteService {
 	//API estrazione tutti gli utenti presenti
 	List<UtenteDTO> getAllUtenti(String nomeRuolo);
+	
+	//API rimozione utente
+	void deleteUtente(Long idUtente);
 }
