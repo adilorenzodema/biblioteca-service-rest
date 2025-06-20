@@ -30,10 +30,11 @@ public class UtenteController {
     }
 	
 	//API estrazione tutti gli utenti presenti
-    @GetMapping("/getAllUtenti")
-    public List<UtenteDTO> getTuttiUtenti(@RequestParam(required=false)String nomeRuolo) {
-        return utenteService.getAllUtenti(nomeRuolo);
-    }
+	@GetMapping("/getAllUtenti/{nomeRuolo}")
+	public List<UtenteDTO> getTuttiUtenti(@PathVariable String nomeRuolo) {
+	    return utenteService.getAllUtenti(nomeRuolo);
+	}
+
     
   //API rimozione utente
   @DeleteMapping("/{idUtente}")
