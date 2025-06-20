@@ -1,6 +1,7 @@
 package com.example.bibliotecaScolastica.service;
 import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.Libro;
+import com.example.bibliotecaScolastica.model.ModificaLibroDTO;
 import com.example.bibliotecaScolastica.model.Prestito;
 import com.example.bibliotecaScolastica.repository.LibriRepository;
 
@@ -8,6 +9,7 @@ import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 @Service
@@ -87,6 +89,14 @@ public class LibriServiceImpl implements LibriService {
 		 libriRepository.addLibro(aggiungiLibroDTO.getTitolo(), aggiungiLibroDTO.getAutore(), aggiungiLibroDTO.getCasaEditrice(),aggiungiLibroDTO.getGenere(), aggiungiLibroDTO.getIban(),aggiungiLibroDTO.getDisponibilita(),now, null, aggiungiLibroDTO.getLink());
 	}
 	
+	
+	//API modifica libro
+	@Override
+	public void modificaLibro (ModificaLibroDTO modificaLibroDTO, Long idLibro) {
+		LocalDateTime now = LocalDateTime.now();
+		Timestamp dataModifica = Timestamp.valueOf(now);
+		libriRepository.modificaLibro(modificaLibroDTO.getTitolo(), modificaLibroDTO.getAutore(), modificaLibroDTO.getCasaEditrice(),modificaLibroDTO.getGenere(),modificaLibroDTO.getIban(),modificaLibroDTO.getDisponibilita(),dataModifica, modificaLibroDTO.getLink(),idLibro);
+	}
 	
 
 }

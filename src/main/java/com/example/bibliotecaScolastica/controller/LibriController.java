@@ -1,6 +1,7 @@
 package com.example.bibliotecaScolastica.controller;
 import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import  com.example.bibliotecaScolastica.model.Libro;
+import com.example.bibliotecaScolastica.model.ModificaLibroDTO;
 import com.example.bibliotecaScolastica.model.infoPrestito;
 import com.example.bibliotecaScolastica.service.LibriService;
 
@@ -72,7 +73,17 @@ public class LibriController {
         }
     }
     
-    
-
-    
+    //API modifica libro
+    @PutMapping("/{idLibro}")
+    public ResponseEntity<?> modificaLibro(@RequestBody ModificaLibroDTO modificaLibroDTO,@PathVariable Long idLibro) throws Exception{
+    	try {
+    		libriService.modificaLibro(modificaLibroDTO, idLibro);
+    		return ResponseEntity.status(HttpStatus.CREATED).body("Libro modificato con successo");
+    	}catch(EntityNotFoundException e) {
+    		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    	}catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+       
 }

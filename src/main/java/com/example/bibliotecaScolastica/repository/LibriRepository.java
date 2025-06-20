@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 import com.example.bibliotecaScolastica.model.Libro;
@@ -50,7 +51,7 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 	//API aggiunta libro
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO schemabiblioteca.libro (titolo, autore, casaeditrice, genere, codiceiban, disponibilita, datacreazione, datamodifica, link) " +
+	@Query(value = "INSERT INTO schemabiblioteca.libro (titolo, autore, casaeditrice, genere, codiceiban, disponibilita, datacreazione, datamodifica, link ) " +
             "VALUES (:titolo, :autore, :casaEditrice, :genere, :iban, :disponibilita, :dataCreazione, :dataModifica, :link)", nativeQuery = true)
 	void addLibro(
 	 @Param("titolo") String titolo,
@@ -64,5 +65,21 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 	 @Param("link") String link
 	);
 	
-	
-	}
+	//API modifica libro 
+	@Modifying
+	@Transactional
+	@Query(value = "UPDATE schemabiblioteca.libro "+
+			"SET titolo= :titolo, autore= :autore, casaeditrice= :casaEditrice, genere= :genere,codiceiban= :iban, disponibilita= :disponibilita, datamodifica= :dataModifica, link= :link "+
+			"WHERE idlibro = :idlibro",nativeQuery=true)
+	void modificaLibro(
+		    @Param("titolo") String titolo,
+		    @Param("autore") String autore,
+		    @Param("casaEditrice") String casaEditrice,
+		    @Param("genere") String genere,
+		    @Param("iban") String iban,
+		    @Param("disponibilita") int disponibilita,
+		    @Param("dataModifica") Timestamp dataModifica,
+		    @Param("link") String link,
+		    @Param("idlibro") Long idLibros
+		);
+}	

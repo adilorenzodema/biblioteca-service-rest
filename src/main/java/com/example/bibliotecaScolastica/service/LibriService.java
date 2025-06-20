@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.Libro;
+import com.example.bibliotecaScolastica.model.ModificaLibroDTO;
 
 public interface LibriService {
 	//API estrazione tutti i libri disponibili
@@ -20,4 +21,7 @@ public interface LibriService {
 	
 	//API aggiunta libro
 	void addLibro(AggiungiLibroDTO aggiuniLibroDTO);
+	
+	//API modifica libro
+	void modificaLibro (ModificaLibroDTO modificaLibroDTO, Long idLibro);
 }
