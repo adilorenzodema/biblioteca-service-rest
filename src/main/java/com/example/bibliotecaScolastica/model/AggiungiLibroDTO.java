@@ -50,6 +50,7 @@ public class AggiungiLibroDTO {
 		public void setDisponibilita (int disponibilita) {
 			this.disponibilita=disponibilita;
 		}
+		
 		public String getLink() {return link;}
 		public void setLink(String link) {
 			this.link=link;
