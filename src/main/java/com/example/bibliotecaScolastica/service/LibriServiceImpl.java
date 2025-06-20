@@ -2,8 +2,6 @@ package com.example.bibliotecaScolastica.service;
 import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.Prestito;
-import com.example.bibliotecaScolastica.model.Utente;
-import com.example.bibliotecaScolastica.model.UtenteDTO;
 import com.example.bibliotecaScolastica.repository.LibriRepository;
 
 import jakarta.persistence.EntityNotFoundException;

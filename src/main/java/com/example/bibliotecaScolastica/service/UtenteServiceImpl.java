@@ -7,10 +7,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
-import com.example.bibliotecaScolastica.model.Prestito;
 import com.example.bibliotecaScolastica.model.UtenteDTO;
-import com.example.bibliotecaScolastica.repository.LibriRepository;
 import com.example.bibliotecaScolastica.repository.UtenteRepository;
 
 @Service

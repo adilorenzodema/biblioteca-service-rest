@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
+
 import com.example.bibliotecaScolastica.model.UtenteDTO;
-import com.example.bibliotecaScolastica.service.LibriService;
+
 import com.example.bibliotecaScolastica.service.UtenteService;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -30,10 +30,11 @@ public class UtenteController {
     }
 	
 	//API estrazione tutti gli utenti presenti
-    @GetMapping("/getAllUtenti")
-    public List<UtenteDTO> getTuttiUtenti(@RequestParam(required=false)String nomeRuolo) {
-        return utenteService.getAllUtenti(nomeRuolo);
-    }
+	@GetMapping("/getAllUtenti/{nomeRuolo}")
+	public List<UtenteDTO> getTuttiUtenti(@PathVariable String nomeRuolo) {
+	    return utenteService.getAllUtenti(nomeRuolo);
+	}
+
     
   //API rimozione utente
   @DeleteMapping("/{idUtente}")

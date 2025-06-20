@@ -1,8 +1,6 @@
 package com.example.bibliotecaScolastica.controller;
 import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import  com.example.bibliotecaScolastica.model.Libro;
-import com.example.bibliotecaScolastica.model.Utente;
-import com.example.bibliotecaScolastica.model.UtenteDTO;
 import com.example.bibliotecaScolastica.model.infoPrestito;
 import com.example.bibliotecaScolastica.service.LibriService;
 
@@ -70,7 +68,7 @@ public class LibriController {
     	}catch(EntityNotFoundException e) {
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     	}catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore del server");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
     

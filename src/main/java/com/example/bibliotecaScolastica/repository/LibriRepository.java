@@ -9,8 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDateTime;
 import java.util.List;
 import com.example.bibliotecaScolastica.model.Libro;
-import com.example.bibliotecaScolastica.model.Utente;
-import com.example.bibliotecaScolastica.model.UtenteDTO;
+
 
 import jakarta.transaction.Transactional;
 
