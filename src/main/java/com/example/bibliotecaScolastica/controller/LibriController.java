@@ -68,7 +68,7 @@ public class LibriController {
     	}catch(EntityNotFoundException e) {
     		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     	}catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore del server");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
     
