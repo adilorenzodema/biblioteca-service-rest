@@ -1,10 +1,7 @@
 package com.example.bibliotecaScolastica.model;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 
 public class UtenteDTO {
 	private Integer idUtente;

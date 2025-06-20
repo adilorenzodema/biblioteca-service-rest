@@ -2,7 +2,6 @@ package com.example.bibliotecaScolastica.service;
 
 import org.springframework.stereotype.Service;
 
-import com.example.bibliotecaScolastica.model.Utente;
 import com.example.bibliotecaScolastica.model.UtenteDTO;
 import com.example.bibliotecaScolastica.repository.LoginRepository;
 @Service 

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.bibliotecaScolastica.model.LoginInput;
-import com.example.bibliotecaScolastica.model.Utente;
 import com.example.bibliotecaScolastica.model.UtenteDTO;
 import com.example.bibliotecaScolastica.service.LoginService;
 

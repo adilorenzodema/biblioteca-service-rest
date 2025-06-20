@@ -2,7 +2,6 @@ package com.example.bibliotecaScolastica.service;
 
 import java.util.List;
 
-import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.UtenteDTO;
 
 public interface UtenteService {

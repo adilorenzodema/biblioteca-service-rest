@@ -1,13 +1,5 @@
 package com.example.bibliotecaScolastica.model;
 
-import java.time.LocalDateTime;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 
 public class AggiungiLibroDTO {
 	private String titolo;
