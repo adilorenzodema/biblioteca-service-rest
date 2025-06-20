@@ -40,4 +40,21 @@ public class UtenteServiceImpl implements UtenteService{
 			 Timestamp timestamp = Timestamp.valueOf(now);
 			 utenteRepository.addUtente(utenteDTO.getNome(),utenteDTO.getCognome(),utenteDTO.getCodiceFiscale(),utenteDTO.getClasse(),timestamp,null,utenteDTO.getUsername(),utenteDTO.getPassword(),true,utenteDTO.getIdRuolo());
 		}
+
+	//API modificaUtente 
+		@Override
+		public void modificaUtente(UtenteDTO utenteDTO) {
+		    Timestamp dataModifica = Timestamp.valueOf(LocalDateTime.now());
+		    utenteRepository.modificaUtente(
+		        utenteDTO.getIdUtente().longValue(),
+		        utenteDTO.getNome(),
+		        utenteDTO.getCognome(),
+		        utenteDTO.getCodiceFiscale(),
+		        utenteDTO.getClasse(),
+		        dataModifica,
+		        utenteDTO.getPassword()
+		    );
+		}
+
+		
 }

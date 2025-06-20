@@ -60,4 +60,19 @@ public class UtenteController {
 	          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore del server");
 	      }
 	  }
+	  
+	// API modificaUtente
+	  @PostMapping("/modificaUtente")
+	  public ResponseEntity<?> modificaUtente(@RequestBody UtenteDTO utenteDTO) {
+	      try {
+	          utenteService.modificaUtente(utenteDTO);
+	          return ResponseEntity.ok("Utente modificato con successo");
+	      } catch (EntityNotFoundException e) {
+	          return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Utente non trovato");
+	      } catch (Exception e) {
+	          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+	                               .body("Errore durante la modifica: " + e.getMessage());
+	      }
+	  }
+	  
 }

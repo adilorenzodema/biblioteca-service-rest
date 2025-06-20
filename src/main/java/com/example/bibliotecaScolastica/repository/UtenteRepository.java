@@ -49,4 +49,26 @@ public interface UtenteRepository extends JpaRepository<Utente, Long> {
 	 	@Param("active") boolean active,
 	 	@Param("idRuolo") int idRuolo
 	);
+	
+	//API modificaUtente 
+	@Modifying
+	@Transactional
+	@Query(value = "UPDATE schemabiblioteca.utente SET " +
+	        "nome = :nome, " +
+	        "cognome = :cognome, " +
+	        "codicefiscale = :codiceFiscale, " +
+	        "classe = :classe, " +
+	        "datamodifica = :dataModifica, " +
+	        "password = :password " +
+	        " WHERE idutente = :idUtente", nativeQuery = true)
+	void modificaUtente(
+	    @Param("idUtente") Long idUtente,
+	    @Param("nome") String nome,
+	    @Param("cognome") String cognome,
+	    @Param("codiceFiscale") String codiceFiscale,
+	    @Param("classe") String classe,
+	    @Param("dataModifica") Timestamp dataModifica,
+	    @Param("password") String password
+	);
+	
 }

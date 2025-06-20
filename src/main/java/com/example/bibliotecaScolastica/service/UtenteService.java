@@ -13,4 +13,8 @@ public interface UtenteService {
 	
 	//API aggiunta utente
 	void addUtente(UtenteDTO utenteDTO );
+	
+	//API modificaUtente
+	void modificaUtente(UtenteDTO utenteDTO);
+
 }
