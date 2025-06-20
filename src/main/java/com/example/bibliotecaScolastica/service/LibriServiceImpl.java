@@ -42,7 +42,15 @@ public class LibriServiceImpl implements LibriService {
 	    if (libro.getDisponibilita() <= 0) {
 	        throw new IllegalStateException("Libro non disponibile");
 	    }
-
+	    
+	    if(idAlunno==null) {
+	    	throw new IllegalStateException ("IdAlunno deve essere inizializzato");
+	    }
+	    
+	    if(idLibro==null) {
+	    	throw new IllegalStateException ("IdLibro deve essere inizializzato");
+	    }
+	    
 	    LocalDateTime now = LocalDateTime.now();
 	    LocalDateTime dataFine = now.plusDays(30);
 
