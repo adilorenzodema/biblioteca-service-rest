@@ -32,10 +32,7 @@ public class UtenteController {
 	//API estrazione tutti gli utenti presenti
 	@GetMapping({"/getAllUtenti", "/getAllUtenti/{nomeRuolo}"})
 	public List<UtenteDTO> getTuttiUtenti(@PathVariable(required = false) String nomeRuolo) {
-	    // Se nomeRuolo è "tutti" lo consideriamo come null per non filtrare
-	    if ("tutti".equalsIgnoreCase(nomeRuolo)) {
-	        nomeRuolo = null;
-	    }
+	    
 	    return utenteService.getAllUtenti(nomeRuolo);
 	}
 
