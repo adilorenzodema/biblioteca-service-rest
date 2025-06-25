@@ -7,10 +7,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 @Entity
+@Table(name = "prestito", schema = "schemabiblioteca")
 public class Prestito {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idprestito")
 	private Long idPrestito;
 	
 	@Column(nullable=false, name="idlibro")
@@ -35,6 +38,7 @@ public class Prestito {
 	private LocalDateTime dataRestituzione;
 	
 	//Costruttori
+	public Prestito() {}
 	public Prestito( Long idLibro, Long idUtente,LocalDateTime dataInzio, LocalDateTime dataFine, LocalDateTime dataCreazione, LocalDateTime dataModifica,LocalDateTime dataRestituzione) {
 		this.idLibro=idLibro;
 		this.idUtente=idUtente;

@@ -81,5 +81,5 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 		    @Param("dataModifica") Timestamp dataModifica,
 		    @Param("link") String link,
 		    @Param("idlibro") Long idLibros
-		);
+	);
 }	
