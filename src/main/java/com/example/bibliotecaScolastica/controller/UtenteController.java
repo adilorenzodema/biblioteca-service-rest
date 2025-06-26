@@ -32,7 +32,6 @@ public class UtenteController {
 	//API estrazione tutti gli utenti presenti
 	@GetMapping({"/getAllUtenti", "/getAllUtenti/{nomeRuolo}"})
 	public List<UtenteDTO> getTuttiUtenti(@PathVariable(required = false) String nomeRuolo) {
-	    
 	    return utenteService.getAllUtenti(nomeRuolo);
 	}
 

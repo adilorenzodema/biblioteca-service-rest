@@ -24,7 +24,7 @@ public interface UtenteRepository extends JpaRepository<Utente, Long> {
 		      "FROM schemabiblioteca.utente u " +
 		      "LEFT JOIN schemabiblioteca.ruolo r ON u.idruolo = r.idruolo " +
 		      "WHERE (:nomeRuolo IS NULL OR r.ruolo = :nomeRuolo)", nativeQuery = true)
-		List<UtenteDTO> findAllUtenti(@Param("nomeRuolo") String nomeRuolo);
+	List<UtenteDTO> findAllUtenti(@Param("nomeRuolo") String nomeRuolo);
 	
 	//API rimozione utente
 	@Modifying

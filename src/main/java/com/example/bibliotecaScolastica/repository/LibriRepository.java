@@ -24,7 +24,7 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 	@Query(value = "SELECT l.* FROM schemabiblioteca.libro l " +
             "JOIN schemabiblioteca.prestito p ON l.idlibro = p.idlibro " +
             "WHERE p.idutente = :idUtente", nativeQuery = true)
-	List<Libro> findLibriInPrestitoByUtenteId(@Param("idUtente") Long idUtente);	// LibriRepository.java
+	List<Libro> findLibriInPrestitoByUtenteId(@Param("idUtente") Long idUtente);	
 	
 	//API concessione prestito
 	@Modifying

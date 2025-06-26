@@ -1,5 +1,6 @@
 package com.example.bibliotecaScolastica.repository;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,10 +9,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.Prestito;
+import com.example.bibliotecaScolastica.model.UtenteDTO;
+import com.example.bibliotecaScolastica.model.infoPrestito;
 @Repository
 public interface PrestitoRepository extends JpaRepository<Prestito, Long> {
-    @Modifying
+    /*API per la conclusione del prestito
+     * Popola la colonna dataRestituzione
+     * Aumenta di uno la disponibilità del libro
+     * Estrae il nome e il cognome dell'utente 
+     * */
+	@Modifying
     @Query(value = "UPDATE schemabiblioteca.prestito SET datarestituzione = CURRENT_TIMESTAMP WHERE idprestito= :idPrestito AND datarestituzione IS NULL", nativeQuery = true)
     int aggiornaDataRestituzione(@Param("idPrestito") Long idPrestito);
 
@@ -21,5 +30,17 @@ public interface PrestitoRepository extends JpaRepository<Prestito, Long> {
 
     @Query(value = "SELECT CONCAT(u.nome, ' ', u.cognome) FROM schemabiblioteca.utente u WHERE u.idutente = :idUtente", nativeQuery = true)
     String getNomeCognomeUtente(@Param("idUtente") Long idUtente);
+    
+    
+    @Query(value = """
+    		SELECT u.idutente, p.idlibro, CONCAT(u.nome, ' ', u.cognome) AS nomeCognome, p.datafine
+    		FROM schemabiblioteca.prestito p
+    		INNER JOIN schemabiblioteca.utente u ON p.idutente = u.idutente
+    		WHERE p.datarestituzione IS NULL
+    		AND (:idLibro IS NULL OR p.idlibro = :idLibro)
+    	""", nativeQuery = true)
+    	List<Object[]> findAllPrestiti(@Param("idLibro") Long idLibro);
+
+
 
 }

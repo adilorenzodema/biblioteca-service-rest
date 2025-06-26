@@ -1,5 +1,6 @@
 package com.example.bibliotecaScolastica.model;
 
+import java.security.Timestamp;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -23,23 +24,23 @@ public class Prestito {
 	private Long idUtente;
 	
 	@Column(nullable=false,name="datainizio")
-	private LocalDateTime dataInizio;
+	private Timestamp dataInizio;
 	
 	@Column(nullable=false,name="datafine")
-	private LocalDateTime dataFine;
+	private Timestamp dataFine;
 	
 	@Column(nullable=false,name="datacreazione")
-	private LocalDateTime dataCreazione;
+	private Timestamp dataCreazione;
 	
 	@Column(nullable=false,name="datamodifica")
-	private LocalDateTime dataModifica;
+	private Timestamp dataModifica;
 	
 	@Column(nullable=true,name="datarestituzione")
-	private LocalDateTime dataRestituzione;
+	private Timestamp dataRestituzione;
 	
 	//Costruttori
 	public Prestito() {}
-	public Prestito( Long idLibro, Long idUtente,LocalDateTime dataInzio, LocalDateTime dataFine, LocalDateTime dataCreazione, LocalDateTime dataModifica,LocalDateTime dataRestituzione) {
+	public Prestito( Long idLibro, Long idUtente,Timestamp dataInzio, Timestamp dataFine, Timestamp dataCreazione, Timestamp dataModifica,Timestamp dataRestituzione) {
 		this.idLibro=idLibro;
 		this.idUtente=idUtente;
 		this.dataInizio=dataInzio;
@@ -64,28 +65,28 @@ public class Prestito {
 		this.idUtente=idUtente;
 	}
 	
-	public LocalDateTime getDataInzio(){return dataInizio;}
-	public void setDataInzio(LocalDateTime dataInizio) {
+	public Timestamp getDataInzio(){return dataInizio;}
+	public void setDataInzio(Timestamp dataInizio) {
 		this.dataInizio=dataInizio;
 	}
 	
-	public LocalDateTime getDataFine(){return dataFine;}
-	public void setDataFine(LocalDateTime dataFine) {
+	public Timestamp getDataFine(){return dataFine;}
+	public void setDataFine(Timestamp dataFine) {
 		this.dataFine=dataFine;
 	}
 	
-	public LocalDateTime getDataCreazione() {return dataCreazione;}
-	public void setDataCreazione(LocalDateTime dataCreazione) {
+	public Timestamp getDataCreazione() {return dataCreazione;}
+	public void setDataCreazione(Timestamp dataCreazione) {
 		this.dataCreazione=dataCreazione;
 	}
 	
-	public LocalDateTime getDataModifica() {return dataModifica;}
-	public void setDataModifica(LocalDateTime dataModifica) {
+	public Timestamp getDataModifica() {return dataModifica;}
+	public void setDataModifica(Timestamp dataModifica) {
 		this.dataModifica=dataModifica;
 	}
 	
-	public LocalDateTime getDataRestituzione() {return dataRestituzione;}
-	public void setDatarestituzione(LocalDateTime dataRestituzione) {
+	public Timestamp getDataRestituzione() {return dataRestituzione;}
+	public void setDatarestituzione(Timestamp dataRestituzione) {
 		this.dataRestituzione=dataRestituzione;
 	}
 }
