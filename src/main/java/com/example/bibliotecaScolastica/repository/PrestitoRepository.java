@@ -33,9 +33,10 @@ public interface PrestitoRepository extends JpaRepository<Prestito, Long> {
     
     //API per la restituzione dei prestiti attivi
     @Query(value = """
-    		SELECT u.idutente, p.idlibro, CONCAT(u.nome, ' ', u.cognome) AS nomeCognome, p.datafine
+    		SELECT p.idprestito,u.idutente, p.idlibro, CONCAT(u.nome, ' ', u.cognome) AS nomeCognome, p.datafine, l.titolo
     		FROM schemabiblioteca.prestito p
     		INNER JOIN schemabiblioteca.utente u ON p.idutente = u.idutente
+    		INNER JOIN schemabiblioteca.libro l ON p.idlibro = l.idlibro
     		WHERE p.datarestituzione IS NULL
     		AND (:idLibro IS NULL OR p.idlibro = :idLibro)
     	""", nativeQuery = true)
@@ -43,18 +44,22 @@ public interface PrestitoRepository extends JpaRepository<Prestito, Long> {
    	
    	// API per la restituzione dei prestiti conclusi 
    	@Query(value = """
-   	    SELECT 
-   	        u.idutente, 
-   	        p.idlibro, 
-   	        CONCAT(u.nome, ' ', u.cognome) AS nomeCognome, 
-   	        p.datafine,
-   	        p.datarestituzione
-   	    FROM schemabiblioteca.prestito p
-   	    INNER JOIN schemabiblioteca.utente u ON p.idutente = u.idutente
-   	    WHERE p.datarestituzione IS NOT NULL
-   	      AND (:idLibro IS NULL OR p.idlibro = :idLibro)
-   	    """, nativeQuery = true)
-   	List<Object[]> findAllPrestitiConclusi(@Param("idLibro") Long idLibro);
+   		    SELECT 
+   		    	p.idprestito,
+   		        u.idutente, 
+   		        p.idlibro, 
+   		        CONCAT(u.nome, ' ', u.cognome) AS nomeCognome, 
+   		        p.datafine,
+   		        p.datarestituzione,
+   		        l.titolo
+   		    FROM schemabiblioteca.prestito p
+   		    INNER JOIN schemabiblioteca.utente u ON p.idutente = u.idutente
+   		    INNER JOIN schemabiblioteca.libro l ON p.idlibro = l.idlibro
+   		    WHERE p.datarestituzione IS NOT NULL
+   		      AND (:idLibro IS NULL OR p.idlibro = :idLibro)
+   		    """, nativeQuery = true)
+   		List<Object[]> findAllPrestitiConclusi(@Param("idLibro") Long idLibro);
+
 
 
 

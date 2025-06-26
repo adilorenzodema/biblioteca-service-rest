@@ -5,7 +5,8 @@ import java.sql.Timestamp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class infoPrestito {
-    private Long idUtente;
+	private Long idPrestito;
+	private Long idUtente;
     private Long idLibro;
     private String nomeCognome;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
@@ -13,13 +14,25 @@ public class infoPrestito {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private Timestamp dataRestituzione;
 
-
-    public infoPrestito(Long idUtente, Long idLibro, String nomeCognome, Timestamp dataFine, Timestamp dataRestituzione) {
+    private String titoloLibro;
+    
+    public infoPrestito() {
+    }
+    public infoPrestito(Long idPrestito, Long idUtente, Long idLibro, String nomeCognome, Timestamp dataFine, Timestamp dataRestituzione, String titoloLibro) {
+        this.idPrestito = idPrestito;
         this.idUtente = idUtente;
         this.idLibro = idLibro;
         this.nomeCognome = nomeCognome;
         this.dataFine = dataFine;
-        this.dataRestituzione=dataRestituzione;
+        this.dataRestituzione = dataRestituzione;
+        this.titoloLibro = titoloLibro;
+    }
+
+    public Long getIdPrestito() {
+        return idPrestito;
+    }
+    public void setIdPrestito(Long idPrestito) {
+        this.idPrestito = idPrestito;
     }
 
     // Getter e setter
@@ -37,4 +50,7 @@ public class infoPrestito {
     
     public Timestamp getDataRestituzione() { return dataRestituzione; }
     public void setDataRestituzione(Timestamp dataRestituzione) { this.dataRestituzione = dataRestituzione; }
+    
+    public String getTitoloLibro() { return titoloLibro; }
+    public void setTitoloLibro(String titoloLibro) { this.titoloLibro = titoloLibro; }
 }

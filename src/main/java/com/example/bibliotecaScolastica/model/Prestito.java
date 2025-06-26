@@ -1,7 +1,6 @@
 package com.example.bibliotecaScolastica.model;
 
-import java.security.Timestamp;
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -65,10 +64,12 @@ public class Prestito {
 		this.idUtente=idUtente;
 	}
 	
-	public Timestamp getDataInzio(){return dataInizio;}
-	public void setDataInzio(Timestamp dataInizio) {
-		this.dataInizio=dataInizio;
-	}
+	 public Timestamp getDataInizio() {   
+	        return dataInizio;
+	    }
+	    public void setDataInizio(Timestamp dataInizio) {
+	        this.dataInizio = dataInizio;
+	    }
 	
 	public Timestamp getDataFine(){return dataFine;}
 	public void setDataFine(Timestamp dataFine) {
@@ -85,8 +86,10 @@ public class Prestito {
 		this.dataModifica=dataModifica;
 	}
 	
-	public Timestamp getDataRestituzione() {return dataRestituzione;}
-	public void setDatarestituzione(Timestamp dataRestituzione) {
-		this.dataRestituzione=dataRestituzione;
-	}
+	  public Timestamp getDataRestituzione() {
+	        return dataRestituzione;
+	    }
+	    public void setDataRestituzione(Timestamp dataRestituzione) {  // prima setDatarestituzione
+	        this.dataRestituzione = dataRestituzione;
+	    }
 }
