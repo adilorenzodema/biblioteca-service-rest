@@ -9,5 +9,7 @@ public interface PrestitoService {
 	String terminaPrestito(Long idPrestito);
 	
 	List <infoPrestito>getAllPrestiti(Long idLibro);
+	
+	List <infoPrestito>getAllPrestitiConclusi(Long idLibro);
 
 }

@@ -31,7 +31,7 @@ public interface PrestitoRepository extends JpaRepository<Prestito, Long> {
     @Query(value = "SELECT CONCAT(u.nome, ' ', u.cognome) FROM schemabiblioteca.utente u WHERE u.idutente = :idUtente", nativeQuery = true)
     String getNomeCognomeUtente(@Param("idUtente") Long idUtente);
     
-    
+    //API per la restituzione dei prestiti attivi
     @Query(value = """
     		SELECT u.idutente, p.idlibro, CONCAT(u.nome, ' ', u.cognome) AS nomeCognome, p.datafine
     		FROM schemabiblioteca.prestito p
@@ -39,7 +39,22 @@ public interface PrestitoRepository extends JpaRepository<Prestito, Long> {
     		WHERE p.datarestituzione IS NULL
     		AND (:idLibro IS NULL OR p.idlibro = :idLibro)
     	""", nativeQuery = true)
-    	List<Object[]> findAllPrestiti(@Param("idLibro") Long idLibro);
+   	List<Object[]> findAllPrestiti(@Param("idLibro") Long idLibro);
+   	
+   	// API per la restituzione dei prestiti conclusi 
+   	@Query(value = """
+   	    SELECT 
+   	        u.idutente, 
+   	        p.idlibro, 
+   	        CONCAT(u.nome, ' ', u.cognome) AS nomeCognome, 
+   	        p.datafine,
+   	        p.datarestituzione
+   	    FROM schemabiblioteca.prestito p
+   	    INNER JOIN schemabiblioteca.utente u ON p.idutente = u.idutente
+   	    WHERE p.datarestituzione IS NOT NULL
+   	      AND (:idLibro IS NULL OR p.idlibro = :idLibro)
+   	    """, nativeQuery = true)
+   	List<Object[]> findAllPrestitiConclusi(@Param("idLibro") Long idLibro);
 
 
 

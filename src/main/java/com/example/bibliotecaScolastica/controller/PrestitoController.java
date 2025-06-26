@@ -34,10 +34,16 @@ public class PrestitoController {
         }
     }
     
-    //API estrazione tutti gli utenti presenti
+    //API estrazione tutti i prestiti presenti
     @GetMapping({"/getAllPrestito", "/getAllPrestito/{idLibro}"})
-    public List<infoPrestito> getTuttiUtenti(@PathVariable(required = false) Long idLibro) {
+    public List<infoPrestito> getTuttiPrestiti(@PathVariable(required = false) Long idLibro) {
         return prestitoService.getAllPrestiti(idLibro);
+    }
+    
+    //API estrazione tutti i prestiti conclusi
+    @GetMapping({"/getAllPrestitiConclusi", "/getAllPrestitiConclusi/{idLibro}"})
+    public List<infoPrestito> getTuttiPrestitiConclusi(@PathVariable(required = false) Long idLibro) {
+        return prestitoService.getAllPrestitiConclusi(idLibro);
     }
 
 }

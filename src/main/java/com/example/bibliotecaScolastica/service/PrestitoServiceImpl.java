@@ -57,7 +57,37 @@ public class PrestitoServiceImpl implements PrestitoService {
 				dataFine = new Timestamp(date.getTime());
 			}
 
-			prestiti.add(new infoPrestito(idUtente, idLibroResult, nomeCognome, dataFine));
+			prestiti.add(new infoPrestito(idUtente, idLibroResult, nomeCognome, dataFine,null));
+		}
+		return prestiti;
+	}
+	
+	//API estrazione tutti gli prestiti non attivi
+	@Override
+	public List<infoPrestito> getAllPrestitiConclusi(Long idLibro) {
+		List<Object[]> results = prestitoRepository.findAllPrestitiConclusi(idLibro);
+		List<infoPrestito> prestiti = new ArrayList<>();
+			
+		for (Object[] row : results) {
+			Long idUtente = ((Number) row[0]).longValue();
+			Long idLibroResult = ((Number) row[1]).longValue();
+			String nomeCognome = (String) row[2];
+
+			Timestamp dataFine = null;
+	        Timestamp dataRestituzione = null;
+
+			if (row[3] instanceof Timestamp ts) {
+				dataFine = ts;
+			} else if (row[3] instanceof Date date) {
+				dataFine = new Timestamp(date.getTime());
+			}
+			
+			if (row[4] instanceof Timestamp ts) {
+	            dataRestituzione = ts;
+	        } else if (row[4] instanceof Date date) {
+	            dataRestituzione = new Timestamp(date.getTime());
+	        }
+	        prestiti.add(new infoPrestito(idUtente, idLibroResult, nomeCognome, dataFine, dataRestituzione));
 		}
 		return prestiti;
 	}
