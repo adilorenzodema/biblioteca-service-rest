@@ -33,7 +33,7 @@ public interface PrestitoRepository extends JpaRepository<Prestito, Long> {
     
     //API per la restituzione dei prestiti attivi
     @Query(value = """
-    		SELECT p.idprestito,u.idutente, p.idlibro, CONCAT(u.nome, ' ', u.cognome) AS nomeCognome, p.datafine, l.titolo
+    		SELECT p.idprestito,u.idutente, p.idlibro, CONCAT(u.nome, ' ', u.cognome) AS nomeCognome,p.dataInizio, p.datafine, l.titolo
     		FROM schemabiblioteca.prestito p
     		INNER JOIN schemabiblioteca.utente u ON p.idutente = u.idutente
     		INNER JOIN schemabiblioteca.libro l ON p.idlibro = l.idlibro
@@ -49,6 +49,7 @@ public interface PrestitoRepository extends JpaRepository<Prestito, Long> {
    		        u.idutente, 
    		        p.idlibro, 
    		        CONCAT(u.nome, ' ', u.cognome) AS nomeCognome, 
+   		        p.datainizio,
    		        p.datafine,
    		        p.datarestituzione,
    		        l.titolo

@@ -2,6 +2,7 @@ package com.example.bibliotecaScolastica.controller;
 import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import  com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.ModificaLibroDTO;
+import com.example.bibliotecaScolastica.model.PrestitoDettaglioDTO;
 import com.example.bibliotecaScolastica.model.infoPrestito;
 import com.example.bibliotecaScolastica.service.LibriService;
 
@@ -28,12 +29,13 @@ public class LibriController {
         return libriService.getAllLibri();
     }
 	
-  //API estrazione i libri di un utente
     @GetMapping("/getMyLibri")
-    public List<Libro> getLibriInPrestitoPerUtente(@RequestParam Long idUtente) {
+    public List<PrestitoDettaglioDTO> getLibriInPrestitoPerUtente(@RequestParam Long idUtente) {
         return libriService.getLibriInPrestitoPerUtente(idUtente);
     }
-        
+
+
+ 
     //API concessione prestito
     @PostMapping("/concedi")
     public ResponseEntity<?> concederePrestito(@RequestBody infoPrestito infoPrestito) throws Exception{

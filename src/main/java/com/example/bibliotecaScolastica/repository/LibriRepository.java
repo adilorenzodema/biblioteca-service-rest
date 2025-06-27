@@ -10,7 +10,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 import com.example.bibliotecaScolastica.model.Libro;
-
+import com.example.bibliotecaScolastica.model.PrestitoDettaglioDTO;
+import com.example.bibliotecaScolastica.model.infoPrestito;
 
 import jakarta.transaction.Transactional;
 
@@ -21,10 +22,16 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 	List<Libro> findAllNative();
 	
 	//API estrazione i libri di un utente
-	@Query(value = "SELECT l.* FROM schemabiblioteca.libro l " +
-            "JOIN schemabiblioteca.prestito p ON l.idlibro = p.idlibro " +
-            "WHERE p.idutente = :idUtente", nativeQuery = true)
-	List<Libro> findLibriInPrestitoByUtenteId(@Param("idUtente") Long idUtente);	
+	@Query("SELECT new com.example.bibliotecaScolastica.model.PrestitoDettaglioDTO(" +
+		       "p.idPrestito, p.idUtente, p.idLibro, CONCAT(u.nome, ' ', u.cognome), " +
+		       "p.dataInizio, p.dataFine, p.dataRestituzione, " +
+		       "l.titolo, l.autore, l.casaEditrice, l.genere, l.link) " +
+		       "FROM Prestito p " +
+		       "JOIN Libro l ON p.idLibro = l.idLibro " +
+		       "JOIN Utente u ON p.idUtente = u.idUtente " +
+		       "WHERE p.idUtente = :idUtente")
+	List<PrestitoDettaglioDTO> findPrestitiDettaglioByUtenteId(@Param("idUtente") Long idUtente);
+
 	
 	//API concessione prestito
 	@Modifying

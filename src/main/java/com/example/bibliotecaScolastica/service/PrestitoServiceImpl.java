@@ -67,15 +67,22 @@ public class PrestitoServiceImpl implements PrestitoService {
 			Long idUtente = ((Number) row[1]).longValue();
 			Long idLibroResult = ((Number) row[2]).longValue();
 			String nomeCognome = (String) row[3];
-
+			
+			Timestamp dataInizio=null;
 			Timestamp dataFine = null;
+			
 			if (row[4] instanceof Timestamp ts) {
-				dataFine = ts;
+				dataInizio = ts;
 			} else if (row[4] instanceof Date date) {
+				dataInizio = new Timestamp(date.getTime());
+			}
+			if (row[5] instanceof Timestamp ts) {
+				dataFine = ts;
+			} else if (row[5] instanceof Date date) {
 				dataFine = new Timestamp(date.getTime());
 			}
-			String titoloLibro = (String) row[5];
-			prestiti.add(new infoPrestito(idPrestito,idUtente, idLibroResult, nomeCognome, dataFine,null,titoloLibro));
+			String titoloLibro = (String) row[6];
+			prestiti.add(new infoPrestito(idPrestito,idUtente, idLibroResult, nomeCognome,dataInizio, dataFine,null,titoloLibro));
 		}
 		return prestiti;
 	}
@@ -91,25 +98,32 @@ public class PrestitoServiceImpl implements PrestitoService {
 	        Long idUtente = ((Number) row[1]).longValue();
 	        Long idLibroResult = ((Number) row[2]).longValue();
 	        String nomeCognome = (String) row[3];
-
+	        
+	        Timestamp dataInizio=null;
 	        Timestamp dataFine = null;
 	        Timestamp dataRestituzione = null;
-
+	        
 	        if (row[4] instanceof Timestamp ts) {
-	            dataFine = ts;
+	            dataInizio = ts;
 	        } else if (row[4] instanceof Date date) {
+	            dataInizio = new Timestamp(date.getTime());
+	        }
+	        
+	        if (row[5] instanceof Timestamp ts) {
+	            dataFine = ts;
+	        } else if (row[5] instanceof Date date) {
 	            dataFine = new Timestamp(date.getTime());
 	        }
 
-	        if (row[5] instanceof Timestamp ts) {
+	        if (row[6] instanceof Timestamp ts) {
 	            dataRestituzione = ts;
-	        } else if (row[5] instanceof Date date) {
+	        } else if (row[6] instanceof Date date) {
 	            dataRestituzione = new Timestamp(date.getTime());
 	        }
 
-	        String titoloLibro = (String) row[6];
+	        String titoloLibro = (String) row[7];
 
-	        prestiti.add(new infoPrestito(idPrestito, idUtente, idLibroResult, nomeCognome, dataFine, dataRestituzione, titoloLibro));
+	        prestiti.add(new infoPrestito(idPrestito, idUtente, idLibroResult, nomeCognome,dataInizio, dataFine, dataRestituzione, titoloLibro));
 	    }
 	    return prestiti;
 	}

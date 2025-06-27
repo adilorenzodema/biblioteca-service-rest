@@ -3,6 +3,8 @@ import com.example.bibliotecaScolastica.model.AggiungiLibroDTO;
 import com.example.bibliotecaScolastica.model.Libro;
 import com.example.bibliotecaScolastica.model.ModificaLibroDTO;
 import com.example.bibliotecaScolastica.model.Prestito;
+import com.example.bibliotecaScolastica.model.PrestitoDettaglioDTO;
+import com.example.bibliotecaScolastica.model.infoPrestito;
 import com.example.bibliotecaScolastica.repository.LibriRepository;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -28,10 +30,11 @@ public class LibriServiceImpl implements LibriService {
 	
 	//API estrazione i libri di un utente
 	@Override
-	public List<Libro> getLibriInPrestitoPerUtente(Long idUtente) {
-		return libriRepository.findLibriInPrestitoByUtenteId(idUtente);
-	    
+	public List<PrestitoDettaglioDTO> getLibriInPrestitoPerUtente(Long idUtente) {
+	    return libriRepository.findPrestitiDettaglioByUtenteId(idUtente);
 	}
+
+
 	
 	//API concessione prestito
 	@Override
