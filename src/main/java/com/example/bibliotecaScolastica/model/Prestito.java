@@ -88,4 +88,18 @@ public class Prestito {
 	    public void setDataRestituzione(Timestamp dataRestituzione) {  // prima setDatarestituzione
 	        this.dataRestituzione = dataRestituzione;
 	    }
+	    
+	    @ManyToOne
+	    @JoinColumn(name = "idutente", insertable = false, updatable = false)
+	    private Utente utente;
+
+	    public Utente getUtente() {
+	        return utente;
+	    }
+
+	    public void setUtente(Utente utente) {
+	        this.utente = utente;
+	    }
+
+	    
 }

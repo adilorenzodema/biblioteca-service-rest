@@ -61,7 +61,7 @@ public interface PrestitoRepository extends JpaRepository<Prestito, Long> {
    		    """, nativeQuery = true)
    		List<Object[]> findAllPrestitiConclusi(@Param("idLibro") Long idLibro);
 
-
-
+   	 @Query("SELECT p FROM Prestito p WHERE p.dataRestituzione IS NULL AND p.dataFine < CURRENT_TIMESTAMP")
+     List<Prestito> findPrestitiScadutiNonRestituiti();
 
 }
