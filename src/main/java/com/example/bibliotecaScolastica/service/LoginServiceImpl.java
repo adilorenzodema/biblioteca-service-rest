@@ -4,8 +4,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.bibliotecaScolastica.model.UtenteDTO;
 import com.example.bibliotecaScolastica.repository.LoginRepository;
+
 @Service 
-public class LoginServiceImpl implements LoginService{
+public class LoginServiceImpl implements LoginService {
     private final LoginRepository loginRepository;
     
     public LoginServiceImpl(LoginRepository loginRepository) {
@@ -14,27 +15,13 @@ public class LoginServiceImpl implements LoginService{
     
     @Override
     public UtenteDTO checkUser(String username, String password) {
-    	UtenteDTO utente = this.loginRepository.checkUtente(username);
+        UtenteDTO utente = this.loginRepository.checkUtente(username);
         if(utente == null) {
             throw new IllegalArgumentException("Utente non trovato");
         }
         
         if (utente.getPassword().equals(password)) {
-            return new UtenteDTO(
-                utente.getIdUtente(),
-                utente.getNome(),
-                utente.getCognome(),
-                utente.getCodiceFiscale(),
-                utente.getClasse(),
-                utente.getEmail(),
-                utente.getDataCreazione(),
-                utente.getDataModifica(),
-                utente.getUsername(),
-                utente.getPassword(),
-                utente.getActive(),
-                utente.getIdRuolo(),
-                utente.getNomeRuolo()
-            );
+            return utente; // Return the DTO directly
         } else {
             throw new IllegalArgumentException("Password errata");
         }

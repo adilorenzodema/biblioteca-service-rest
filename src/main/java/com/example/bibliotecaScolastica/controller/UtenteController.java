@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -60,6 +60,19 @@ public class UtenteController {
 	          return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Errore del server");
 	      }
 	  }
+	  
+	  @PostMapping("/verificaCodice")
+	    public ResponseEntity<?> verificaCodice(@RequestParam String username, @RequestParam int codice) {
+	        try {
+	            if(utenteService.attivaUtente(username, codice)) {
+	                return ResponseEntity.ok("Account attivato con successo!");
+	            } else {
+	                return ResponseEntity.badRequest().body("Codice di verifica non valido");
+	            }
+	        } catch (Exception e) {
+	            return ResponseEntity.internalServerError().body("Errore durante la verifica");
+	        }
+	    }
 	  
 	// API modificaUtente
 	  @PostMapping("/modificaUtente")

@@ -32,11 +32,11 @@ public interface UtenteRepository extends JpaRepository<Utente, Long> {
 	@Query(value = "DELETE FROM schemabiblioteca.utente WHERE idutente = :idutente", nativeQuery = true)
 	void deleteUtente(@Param("idutente") Long idUtente);
 	
-	//API aggiunta libro
+	//API aggiunta utente
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO schemabiblioteca.utente (nome, cognome, codicefiscale, classe, email, datacreazione, datamodifica, username, password, active, idruolo) " +
-	           "VALUES (:nome, :cognome, :codiceFiscale, :classe,:email, :dataCreazione, :dataModifica, :username, :password, :active, :idRuolo)", nativeQuery = true)
+	@Query(value = "INSERT INTO schemabiblioteca.utente (nome, cognome, codicefiscale, classe, email, datacreazione, datamodifica, username, password, active, idruolo,codiceverifica) " +
+	           "VALUES (:nome, :cognome, :codiceFiscale, :classe,:email, :dataCreazione, :dataModifica, :username, :password, :active, :idRuolo, :codiceVerifica)", nativeQuery = true)
 	void addUtente(
 		@Param("nome") String nome,
 		@Param("cognome") String cognome,
@@ -48,9 +48,17 @@ public interface UtenteRepository extends JpaRepository<Utente, Long> {
 	 	@Param("username") String username,
 	 	@Param("password") String password,
 	 	@Param("active") boolean active,
-	 	@Param("idRuolo") int idRuolo
+	 	@Param("idRuolo") int idRuolo,
+	 	@Param("codiceVerifica") int codiceVerifica
 	);
-
+	
+	
+    @Modifying
+    @Transactional
+    @Query("UPDATE Utente u SET u.active = true WHERE u.username = :username AND u.codiceVerifica = :codice")
+    int attivaUtente(@Param("username") String username, @Param("codice") int codice);
+	
+	
 	
 	//API modificaUtente 
 	@Modifying
