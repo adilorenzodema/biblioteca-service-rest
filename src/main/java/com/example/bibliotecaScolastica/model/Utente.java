@@ -1,7 +1,7 @@
 package com.example.bibliotecaScolastica.model;
 
 import java.time.LocalDateTime;
-
+import java.sql.Timestamp;
 import jakarta.persistence.*;
 
 @Entity
@@ -10,7 +10,7 @@ public class Utente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="idutente")
-	private Long idUtente;
+	private Integer idUtente;
 	
 	@Column(name="nome")
 	private String nome;
@@ -28,13 +28,13 @@ public class Utente {
 	private String email;
 	
 	@Column(name = "codiceverifica")
-	private int codiceVerifica;
+	private Integer  codiceVerifica;
 	
 	@Column(name="datacreazione")
-	private LocalDateTime dataCreazione;
+	private Timestamp dataCreazione;
 	
 	@Column(name="datamodifica")
-	private LocalDateTime dataModifica;
+	private Timestamp dataModifica;
 	
 	@Column(name="username")
 	private String username;
@@ -46,14 +46,14 @@ public class Utente {
 	private Boolean active;
 	
 	@Column(name = "idruolo")
-	private int idRuolo;
+	private Integer  idRuolo;
 	
 	@Transient
     private String nomeRuolo;
 	
 	public Utente() { }
 	
-	public Utente (Long idUtente, String nome, String cognome, String codiceFiscale, String classe,String email, int codiceVerifica, LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,Boolean active,int idRuolo) {
+	public Utente (Integer idUtente, String nome, String cognome, String codiceFiscale, String classe,String email, Integer  codiceVerifica, Timestamp dataCreazione, Timestamp dataModifica,String username,String password,Boolean active,Integer  idRuolo) {
 		this.idUtente=idUtente;
 		this.nome=nome;
 		this.cognome=cognome;
@@ -70,8 +70,8 @@ public class Utente {
 	}
 	
 	//metodi getter e setter
-	public Long getIdUtente() {return idUtente;}
-	public void setIdUtente(Long idUtente) {
+	public Integer getIdUtente() {return idUtente;}
+	public void setIdUtente(Integer idUtente) {
 		this.idUtente=idUtente;
 	}
 	
@@ -100,18 +100,18 @@ public class Utente {
 		this.email=email;
 	}
 	
-	public int getCodiceVerifica() {return codiceVerifica;}
-	public void setCodiceVerifica(int codiceVerifica) {
+	public Integer  getCodiceVerifica() {return codiceVerifica;}
+	public void setCodiceVerifica(Integer  codiceVerifica) {
 		this.codiceVerifica=codiceVerifica;
 	}
 	
-	public LocalDateTime getDataCreazione() {return dataCreazione;}
-	public void setDataCreazione(LocalDateTime dataCreazione) {
+	public Timestamp getDataCreazione() {return dataCreazione;}
+	public void setDataCreazione(Timestamp dataCreazione) {
 		this.dataCreazione=dataCreazione;
 	}
 	
-	public LocalDateTime getDataModifica() {return dataModifica;}
-	public void setDataModifica(LocalDateTime dataModifica) {
+	public Timestamp getDataModifica() {return dataModifica;}
+	public void setDataModifica(Timestamp dataModifica) {
 		this.dataModifica=dataModifica;
 	}
 	
@@ -130,8 +130,8 @@ public class Utente {
 		this.active=active;
 	}
 	
-	public int getIdRuolo() {return idRuolo;}
-	public void setIdRuolo(int idRuolo) {
+	public Integer  getIdRuolo() {return idRuolo;}
+	public void setIdRuolo(Integer  idRuolo) {
 		this.idRuolo=idRuolo;
 	}
 	public String getNomeRuolo() {

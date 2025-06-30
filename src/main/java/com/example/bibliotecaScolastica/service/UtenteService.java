@@ -14,6 +14,7 @@ public interface UtenteService {
 	//API aggiunta utente
 	void addUtente(UtenteDTO utenteDTO );
 	
+	public boolean attivaUtente(String username, int codice);
 	//API modificaUtente
 	void modificaUtente(UtenteDTO utenteDTO);
 
