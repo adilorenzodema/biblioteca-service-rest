@@ -2,13 +2,7 @@ package com.example.bibliotecaScolastica.model;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "utente", schema = "schemabiblioteca")
@@ -29,6 +23,12 @@ public class Utente {
 	
 	@Column(name="classe")
 	private String classe;
+	
+	@Column(name="email")
+	private String email;
+	
+	@Column(name = "codiceverifica")
+	private int codiceVerifica;
 	
 	@Column(name="datacreazione")
 	private LocalDateTime dataCreazione;
@@ -53,12 +53,14 @@ public class Utente {
 	
 	public Utente() { }
 	
-	public Utente (Long idUtente, String nome, String cognome, String codiceFiscale, String classe,LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,Boolean active,int idRuolo) {
+	public Utente (Long idUtente, String nome, String cognome, String codiceFiscale, String classe,String email, int codiceVerifica, LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,Boolean active,int idRuolo) {
 		this.idUtente=idUtente;
 		this.nome=nome;
 		this.cognome=cognome;
 		this.codiceFiscale=codiceFiscale;
 		this.classe=classe;
+		this.email=email;
+		this.codiceVerifica=codiceVerifica;
 		this.dataCreazione=dataCreazione;
 		this.dataModifica=dataModifica;
 		this.username=username;
@@ -91,6 +93,16 @@ public class Utente {
 	public String getClasse() {return classe;}
 	public void setClasse(String classe) {
 		this.classe=classe;
+	}
+	
+	public String getEmail() {return email;}
+	public void setEmail(String email) {
+		this.email=email;
+	}
+	
+	public int getCodiceVerifica() {return codiceVerifica;}
+	public void setCodiceVerifica(int codiceVerifica) {
+		this.codiceVerifica=codiceVerifica;
 	}
 	
 	public LocalDateTime getDataCreazione() {return dataCreazione;}
