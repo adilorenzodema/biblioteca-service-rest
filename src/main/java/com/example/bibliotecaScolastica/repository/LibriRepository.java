@@ -22,10 +22,11 @@ public interface LibriRepository extends JpaRepository<Libro,Long> {
 	List<Libro> findAllNative();
 	
 	//API estrazione i libri di un utente
-	@Query("SELECT new com.example.bibliotecaScolastica.model.PrestitoDettaglioDTO(" +
-		       "p.idPrestito, p.idUtente, p.idLibro, CONCAT(u.nome, ' ', u.cognome), " +
-		       "p.dataInizio, p.dataFine, p.dataRestituzione, " +
-		       "l.titolo, l.autore, l.casaEditrice, l.genere, l.link) " +
+	@Query("SELECT new com.example.bibliotecaScolastica.model.PrestitoDettaglioDTO(\r\n"
+			+ "    p.idPrestito, p.idUtente, p.idLibro, CONCAT(u.nome, ' ', u.cognome),\r\n"
+			+ "    p.dataInizio, p.dataFine, p.dataRestituzione,\r\n"
+			+ "    l.titolo, l.autore, l.casaEditrice, l.genere, l.link, l.iban)\r\n"
+			+ "" +
 		       "FROM Prestito p " +
 		       "JOIN Libro l ON p.idLibro = l.idLibro " +
 		       "JOIN Utente u ON p.idUtente = u.idUtente " +

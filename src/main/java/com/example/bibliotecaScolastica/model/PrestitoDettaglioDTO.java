@@ -24,12 +24,13 @@ public class PrestitoDettaglioDTO {
     private String casaEditrice;
     private String genere;
     private String link;
+    private String iban;
 
     public PrestitoDettaglioDTO() {}
 
     public PrestitoDettaglioDTO(Long idPrestito, Long idUtente, Long idLibro, String nomeCognome,
                                Timestamp dataInizio, Timestamp dataFine, Timestamp dataRestituzione,
-                               String titoloLibro, String autore, String casaEditrice, String genere, String link) {
+                               String titoloLibro, String autore, String casaEditrice, String genere, String link,String iban) {
         this.idPrestito = idPrestito;
         this.idUtente = idUtente;
         this.idLibro = idLibro;
@@ -42,6 +43,7 @@ public class PrestitoDettaglioDTO {
         this.casaEditrice = casaEditrice;
         this.genere = genere;
         this.link = link;
+        this.iban=iban;
     }
 
     // getter e setter per tutti i campi (generati automaticamente o scritti manualmente)
@@ -80,4 +82,11 @@ public class PrestitoDettaglioDTO {
 
     public String getLink() { return link; }
     public void setLink(String link) { this.link = link; }
+    
+    public String getIban() {
+        return iban;
+    }
+    public void setIban(String iban) {
+        this.iban = iban;
+    }
 }
