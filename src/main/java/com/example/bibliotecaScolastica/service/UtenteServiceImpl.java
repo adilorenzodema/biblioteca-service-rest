@@ -38,7 +38,7 @@ public class UtenteServiceImpl implements UtenteService{
 		public void addUtente(UtenteDTO utenteDTO) {
 			 LocalDateTime now = LocalDateTime.now();
 			 Timestamp timestamp = Timestamp.valueOf(now);
-			 utenteRepository.addUtente(utenteDTO.getNome(),utenteDTO.getCognome(),utenteDTO.getCodiceFiscale(),utenteDTO.getClasse(),timestamp,null,utenteDTO.getUsername(),utenteDTO.getPassword(),true,utenteDTO.getIdRuolo());
+			 utenteRepository.addUtente(utenteDTO.getNome(),utenteDTO.getCognome(),utenteDTO.getCodiceFiscale(),utenteDTO.getClasse(),utenteDTO.getEmail(),timestamp,null,utenteDTO.getUsername(),utenteDTO.getPassword(),false,utenteDTO.getIdRuolo());
 		}
 
 	//API modificaUtente 

@@ -9,6 +9,7 @@ public class UtenteDTO {
 	private String cognome;
 	private String codiceFiscale;
 	private String classe;
+	private String email;
 	private Timestamp dataCreazione;
 	private Timestamp dataModifica;
 	private String username;
@@ -19,11 +20,12 @@ public class UtenteDTO {
 	
 	public UtenteDTO() {
     }
-	public UtenteDTO (Integer idUtente, String nome, String cognome, String codiceFiscale, String classe,Timestamp dataCreazione, Timestamp dataModifica,String username,String password,Boolean active,int idRuolo,String nomeRuolo) {
+	public UtenteDTO (Integer idUtente, String nome, String cognome, String codiceFiscale, String classe,String email,Timestamp dataCreazione, Timestamp dataModifica,String username,String password,Boolean active,int idRuolo,String nomeRuolo) {
 		this.idUtente=idUtente;
 		this.nome=nome;
 		this.cognome=cognome;
 		this.codiceFiscale=codiceFiscale;
+		this.classe=classe;
 		this.classe=classe;
 		this.dataCreazione=dataCreazione;
 		this.dataModifica=dataModifica;
@@ -61,6 +63,11 @@ public class UtenteDTO {
 		public String getClasse() {return classe;}
 		public void setClasse(String classe) {
 			this.classe=classe;
+		}
+		
+		public String getEmail() {return email;}
+		public void setEmail(String email) {
+			this.email=email;
 		}
 		
 		public Timestamp getDataCreazione() {return dataCreazione;}

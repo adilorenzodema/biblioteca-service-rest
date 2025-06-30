@@ -26,6 +26,7 @@ public class LoginServiceImpl implements LoginService{
                 utente.getCognome(),
                 utente.getCodiceFiscale(),
                 utente.getClasse(),
+                utente.getEmail(),
                 utente.getDataCreazione(),
                 utente.getDataModifica(),
                 utente.getUsername(),

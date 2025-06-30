@@ -35,20 +35,22 @@ public interface UtenteRepository extends JpaRepository<Utente, Long> {
 	//API aggiunta libro
 	@Modifying
 	@Transactional
-	@Query(value = "INSERT INTO schemabiblioteca.utente (nome, cognome, codicefiscale, classe, datacreazione, datamodifica, username, password, active, idruolo) " +
-	           "VALUES (:nome, :cognome, :codiceFiscale, :classe,:dataCreazione, :dataModifica, :username, :password, :active, :idRuolo)", nativeQuery = true)
+	@Query(value = "INSERT INTO schemabiblioteca.utente (nome, cognome, codicefiscale, classe, email, datacreazione, datamodifica, username, password, active, idruolo) " +
+	           "VALUES (:nome, :cognome, :codiceFiscale, :classe,:email, :dataCreazione, :dataModifica, :username, :password, :active, :idRuolo)", nativeQuery = true)
 	void addUtente(
 		@Param("nome") String nome,
 		@Param("cognome") String cognome,
 		@Param("codiceFiscale") String codiceFiscale,
 		@Param("classe") String classe,
-	 	@Param("dataCreazione") Timestamp timestamp,
+		@Param("email") String email,
+	 	@Param("dataCreazione") Timestamp dataCreazione,
 	 	@Param("dataModifica") Timestamp dataModifica,
 	 	@Param("username") String username,
 	 	@Param("password") String password,
 	 	@Param("active") boolean active,
 	 	@Param("idRuolo") int idRuolo
 	);
+
 	
 	//API modificaUtente 
 	@Modifying
@@ -70,5 +72,6 @@ public interface UtenteRepository extends JpaRepository<Utente, Long> {
 	    @Param("dataModifica") Timestamp dataModifica,
 	    @Param("password") String password
 	);
-	
+
+		
 }
