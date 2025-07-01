@@ -1,56 +1,78 @@
-package com.example.bibliotecaScolastica_service;
-import java.persistence.*;
+package com.example.bibliotecaScolastica.model;
+
+import java.time.LocalDateTime;
+import java.sql.Timestamp;
+import jakarta.persistence.*;
+
 @Entity
+@Table(name = "utente", schema = "schemabiblioteca")
 public class Utente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long idAlunno;
+	@Column(name="idutente")
+	private Integer idUtente;
 	
-	@Column(nullable=false)
+	@Column(name="nome")
 	private String nome;
 	
-	@Column(nullable=false)
+	@Column(name="cognome")
 	private String cognome;
 	
-	@Column(nullable=false)
+	@Column(name="codicefiscale")
 	private String codiceFiscale;
 	
-	@Column(nullable=false)
+	@Column(name="classe")
 	private String classe;
 	
-	@Column(nullable=false)
-	private LocalDateTime dataCreazione;
+	@Column(name="email")
+	private String email;
 	
-	@Column(nullable=false)
-	private LocalDateTime dataModifica;
+	@Column(name = "codiceverifica")
+	private Integer  codiceVerifica;
 	
-	@Column(nullable=false)
+	@Column(name="datacreazione")
+	private Timestamp dataCreazione;
+	
+	@Column(name="datamodifica")
+	private Timestamp dataModifica;
+	
+	@Column(name="username")
 	private String username;
 	
-	@Column(nullable=false)
+	@Column(name="password")
 	private String password;
 	
-	@Column(nullable=false)
-	private boolean active;
+	@Column(name="active")
+	private Boolean active;
 	
-	@Column (nullabe=false)
-	private int idRuolo;
+	@Column(name = "idruolo")
+	private Integer  idRuolo;
 	
-	//Costruttore
-	public Utente (Long idRuolo, String nome, String cognome, String codiceFiscale, String classe,LocalDateTime dataCreazione, LocalDateTime dataModifica,String username,String password,boolean active, int idRuolo) {
-		this.idRuolo=idRuolo;
+	@Transient
+    private String nomeRuolo;
+	
+	public Utente() { }
+	
+	public Utente (Integer idUtente, String nome, String cognome, String codiceFiscale, String classe,String email, Integer  codiceVerifica, Timestamp dataCreazione, Timestamp dataModifica,String username,String password,Boolean active,Integer  idRuolo) {
+		this.idUtente=idUtente;
 		this.nome=nome;
 		this.cognome=cognome;
 		this.codiceFiscale=codiceFiscale;
 		this.classe=classe;
+		this.email=email;
+		this.codiceVerifica=codiceVerifica;
 		this.dataCreazione=dataCreazione;
 		this.dataModifica=dataModifica;
+		this.username=username;
+		this.password=password;
+		this.active=active;
+		this.idRuolo=idRuolo;
 	}
 	
 	//metodi getter e setter
-	public Long getIdUtente() {return idAlunno;}
-	public void setIdUtente(Long idAlunno) {
-		this.idAlunno=idAlunno;
+	public Integer getIdUtente() {return idUtente;}
+	public void setIdUtente(Integer idUtente) {
+		this.idUtente=idUtente;
 	}
 	
 	public String getNome() {return nome;}
@@ -73,13 +95,23 @@ public class Utente {
 		this.classe=classe;
 	}
 	
-	public LocalDateTime getDataCreazione() {return dataCreazione;}
-	public void setDataCreazione(LocalDateTime dataCreazione) {
+	public String getEmail() {return email;}
+	public void setEmail(String email) {
+		this.email=email;
+	}
+	
+	public Integer  getCodiceVerifica() {return codiceVerifica;}
+	public void setCodiceVerifica(Integer  codiceVerifica) {
+		this.codiceVerifica=codiceVerifica;
+	}
+	
+	public Timestamp getDataCreazione() {return dataCreazione;}
+	public void setDataCreazione(Timestamp dataCreazione) {
 		this.dataCreazione=dataCreazione;
 	}
 	
-	public LocalDateTime getDataModifica() {return dataModifica;}
-	public void setDataModifica(LocalDateTime dataModifica) {
+	public Timestamp getDataModifica() {return dataModifica;}
+	public void setDataModifica(Timestamp dataModifica) {
 		this.dataModifica=dataModifica;
 	}
 	
@@ -93,14 +125,20 @@ public class Utente {
 		this.password=password;
 	}
 	
-	public boolean getActive() {return active;}
-	public void setActive(boolean active) {
+	public Boolean getActive() {return active;}
+	public void setActive(Boolean active) {
 		this.active=active;
 	}
 	
-	public int getIdRuolo() {return idRuolo;}
-	public void setIdRuolo() {
+	public Integer  getIdRuolo() {return idRuolo;}
+	public void setIdRuolo(Integer  idRuolo) {
 		this.idRuolo=idRuolo;
 	}
-	
+	public String getNomeRuolo() {
+	    return nomeRuolo;
+	}
+
+	public void setNomeRuolo(String nomeRuolo) {
+	    this.nomeRuolo = nomeRuolo;
+	}
 }

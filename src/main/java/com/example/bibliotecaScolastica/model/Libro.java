@@ -1,41 +1,64 @@
 package com.example.bibliotecaScolastica.model;
-import java.persistence.*;
+
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 @Entity
+@Table(name = "libro", schema = "schemabiblioteca")
 public class Libro {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="idlibro")
 	private Long idLibro;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, name="titolo")
 	private String titolo;
-	@Column
+	@Column(name="autore")
 	private String autore;
-	@Column
+	@Column(name="casaeditrice")
 	private String casaEditrice;
-	@Column
+	@Column(name="genere")
 	private String genere;
-	@Column
+	@Column(name="codiceiban")
 	private String iban;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, name="disponibilita")
 	private int disponibilita;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, name="datacreazione")
+	@JsonProperty("dataCreazione")
 	private LocalDateTime dataCreazione;
 	
-	@Column(nullable=false)
+	@JsonProperty("dataModifica")
+	@Column(nullable=false, name="datamodifica")
 	private LocalDateTime dataModifica;
 	
+	@Column(name="link")
+	private String link;
+
+	//Costruttore vuoto richiesto da JPA
+    public Libro() {
+    }
+	
 	//Costruttore
-	public Libro(String titolo, String autore,String casaEditrice,String genere, String IBAN, int disponibilita,LocalDateTime dataCreazione,LocalDateTime dataModifica) {
-		this.TITOLO=titolo;
-		this.AUTORE=autore;
-		this.CASAEDITRICE=casaEditrice;
-		this.GENERE=genere;
-		this.IBAN=IBAN;
+	public Libro(String titolo, String autore,String casaEditrice,String genere, String IBAN, int disponibilita,LocalDateTime dataCreazione,LocalDateTime dataModifica,String link) {
+		this.titolo=titolo;
+		this.autore=autore;
+		this.casaEditrice=casaEditrice;
+		this.genere=genere;
+		this.iban=IBAN;
 		this.disponibilita=disponibilita;
 		this.dataCreazione=dataCreazione;
 		this.dataModifica=dataModifica;
+		this.link=link;
 	}
 	
 	//Metodi getter e setter
@@ -54,8 +77,8 @@ public class Libro {
 		this.autore=autore;
 	}
 	
-	public String getCasaEditrice() {return CASAEDITRICE;}
-	public void setCasaEditricie(String casaEditrice) {
+	public String getCasaEditrice() {return casaEditrice;}
+	public void setCasaEditrice(String casaEditrice) {
 		this.casaEditrice=casaEditrice;
 	}
 	public String getGenere() {return genere;}
@@ -63,17 +86,18 @@ public class Libro {
 		this.genere=genere;
 	}
 	
-	public String getIBAN() {return iban;}
-	public void setCodiceIban(String iban){
-		this.iban=iban;
+	public String getIban() { return iban; }
+	public void setIban(String iban) {
+	    this.iban = iban;
 	}
+
 	
-	public int getDisponibilita(return disponibilita;)
+	public int getDisponibilita() { return disponibilita;}
 	public void setDisponibilita (int disponibilita) {
 		this.disponibilita=disponibilita;
 	}
 	
-	public locaLocalDateTimelDateTime getDataCreazione() {return dataCreazione;}
+	public LocalDateTime getDataCreazione() {return dataCreazione;}
 	public void setDataCreazione(LocalDateTime dataCreazione) {
 		this.dataCreazione=dataCreazione;
 	}
@@ -82,6 +106,10 @@ public class Libro {
 	public void setDataModifica(LocalDateTime dataModifica) {
 		this.dataModifica=dataModifica;
 	}
-	
+	public String getLink() {return link;}
+	public void setLink(String link) {
+		this.link=link;
+	}
+
 
 }

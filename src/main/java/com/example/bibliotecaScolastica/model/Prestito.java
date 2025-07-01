@@ -1,37 +1,48 @@
-package com.example.bibliotecaScolastica_service;
-import java.persistence.*;
+package com.example.bibliotecaScolastica.model;
+
+import java.sql.Timestamp;
+
+import jakarta.persistence.*;
+
 @Entity
+@Table(name = "prestito", schema = "schemabiblioteca")
 public class Prestito {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "idprestito")
 	private Long idPrestito;
 	
-	@Column(nullable=false)
+	@Column(nullable=false, name="idlibro")
 	private Long idLibro;
 	
-	@Column(nullable=false)
-	private Long idAlunno;
+	@Column(nullable=false,name="idutente")
+	private Long idUtente;
 	
-	@Column(nullable=false)
-	private LocalDateTime dataInizio;
+	@Column(nullable=false,name="datainizio")
+	private Timestamp dataInizio;
 	
-	@Column(nullable=false)
-	private LocalDateTime dataFine;
+	@Column(nullable=false,name="datafine")
+	private Timestamp dataFine;
 	
-	@Column(nullable=false)
-	private LocalDateTime dataCreazione;
+	@Column(nullable=false,name="datacreazione")
+	private Timestamp dataCreazione;
 	
-	@Column(nullable=false)
-	private LocalDateTime dataModifica;
+	@Column(nullable=false,name="datamodifica")
+	private Timestamp dataModifica;
 	
-	public Prestito(Long idPrestito, Long idLibro, Long idAlunno,LocalDateTime dataInzio, LocalDateTime dataFine, LocalDateTime dataCreazione, LocalDateTime dataModifica) {
-		this.idPrestito=idPrestito;
+	@Column(nullable=true,name="datarestituzione")
+	private Timestamp dataRestituzione;
+	
+	//Costruttori
+	public Prestito() {}
+	public Prestito( Long idLibro, Long idUtente,Timestamp dataInzio, Timestamp dataFine, Timestamp dataCreazione, Timestamp dataModifica,Timestamp dataRestituzione) {
 		this.idLibro=idLibro;
-		this.idAlunno=idAlunno;
+		this.idUtente=idUtente;
 		this.dataInizio=dataInzio;
 		this.dataFine=dataFine;
 		this.dataCreazione=dataCreazione;
 		this.dataModifica=dataModifica;
+		this.dataRestituzione=dataRestituzione;
 	}
 	//Metodi getter e setter
 	public Long getIdPrestito() {return idPrestito;}
@@ -44,28 +55,51 @@ public class Prestito {
 		this.idLibro=idLibro;
 	}
 	
-	public Long getIdUtente() {return idAlunno;}
-	public void setIdUtente(Long idAlunno) {
-		this.idAlunno=idAlunno;
+	public Long getIdUtente() {return idUtente;}
+	public void setIdUtente(Long idUtente) {
+		this.idUtente=idUtente;
 	}
 	
-	public LocalDateTime getDataInzio(){return dataInizio;}
-	public void setDataInzio(LocalDateTime dataInizio) {
-		this.dataInizio=dataInizio;
+	 public Timestamp getDataInizio() {   
+	        return dataInizio;
+	    }
+	    public void setDataInizio(Timestamp dataInizio) {
+	        this.dataInizio = dataInizio;
+	    }
+	
+	public Timestamp getDataFine(){return dataFine;}
+	public void setDataFine(Timestamp dataFine) {
+		this.dataFine=dataFine;
 	}
 	
-	public LocalDateTime getDataFine(){return dataFine;}
-	public void setDataFine(LocalDateTime dataFine) {
-		this.dataFineInizio=dataFine;
-	}
-	
-	public LocalDateTime getDataCreazione() {return dataCreazione;}
-	public void setDataCreazione(LocalDateTime dataCreazione) {
+	public Timestamp getDataCreazione() {return dataCreazione;}
+	public void setDataCreazione(Timestamp dataCreazione) {
 		this.dataCreazione=dataCreazione;
 	}
 	
-	public LocalDateTime getDataModifica() {return dataModifica;}
-	public void setDataModifica(LocalDateTime dataModifica) {
+	public Timestamp getDataModifica() {return dataModifica;}
+	public void setDataModifica(Timestamp dataModifica) {
 		this.dataModifica=dataModifica;
 	}
+	
+	  public Timestamp getDataRestituzione() {
+	        return dataRestituzione;
+	    }
+	    public void setDataRestituzione(Timestamp dataRestituzione) {  // prima setDatarestituzione
+	        this.dataRestituzione = dataRestituzione;
+	    }
+	    
+	    @ManyToOne
+	    @JoinColumn(name = "idutente", insertable = false, updatable = false)
+	    private Utente utente;
+
+	    public Utente getUtente() {
+	        return utente;
+	    }
+
+	    public void setUtente(Utente utente) {
+	        this.utente = utente;
+	    }
+
+	    
 }
