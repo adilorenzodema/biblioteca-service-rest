@@ -75,7 +75,7 @@ public class UtenteServiceImpl implements UtenteService{
 	        message.setTo(email);
 	        message.setSubject("Conferma la tua registrazione");
 	        message.setText("Clicca sul link per verificare il tuo account: "
-	            + "http://127.0.0.1:5500/verifica-codice/verifica-codice.html?username=" + username
+	            + "https://biblioteca-scolastica.onrender.com/verifica-codice/verifica-codice.html?username=" + username
 	            + "\nCodice di verifica: " + codice);
 	        
 	        mailSender.send(message);
